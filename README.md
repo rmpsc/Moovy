@@ -1,5 +1,5 @@
-# video-streaming-app
+# Video Streaming Application
+Mobile video streaming application using Flutter SDK for CECS 491B
 
-CSULB 491A/491B Application
-
-Team: NoName
+## Team: No Name
+Romel Pascua | Jarred Dee | Jimmy Tran | Danny Nguyen | Daniel Nguyen
