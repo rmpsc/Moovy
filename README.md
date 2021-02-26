@@ -1,9 +1,10 @@
-![](https://i.gyazo.com/457f5fed0a30eefcdf5badf2fd696657.png)
+![](https://i.gyazo.com/457f5fed0a30eefcdf5badf2fd696657.png)  
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/rmpsc/)
+[![forthebadge](https://forthebadge.com/images/badges/oooo-kill-em.svg)](https://forthebadge.com)
 
 # Moovy
 
-### A moviegoer's favorite app
+### A mooviegoer's favorite app
 
 Developed by No Name
 
