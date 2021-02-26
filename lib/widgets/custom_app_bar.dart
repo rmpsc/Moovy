@@ -5,19 +5,25 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
-        vertical: 30.0,
+        vertical: 12.0,
         horizontal: 20.0,
       ),
       color: Colors.black,
-      child: Expanded(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _AppBarButton(title: 'Moovies', onTap: () => print('Moovies'),),
-            _AppBarButton(title: 'My List', onTap: () => print('My List'),),
-            _AppBarButton(title: 'Account', onTap: () => print('Account'),),
-          ],
-        ),
+      child: Row(
+        children: [
+          Image.asset('assets/tr_moovy_logo2.gif'),
+          const SizedBox(width: 12.0,),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _AppBarButton(title: 'Moovies', onTap: () => print('Moovies'),),
+                _AppBarButton(title: 'My List', onTap: () => print('My List'),),
+                _AppBarButton(title: 'Account', onTap: () => print('Account'),),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
