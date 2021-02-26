@@ -4,7 +4,7 @@ import '../objects/movie.dart';
 
 // allows to be called in other widgets
 final movieServiceProvider = Provider<MovieService>((ref) {
-  final apiKey = '6578f8355159d1d3f5bf00923aea9cce';
+  final apiKey = 'YOUR API KEY HERE';
   return MovieService(apiKey, Dio());
 });
 
