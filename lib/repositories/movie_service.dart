@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../objects/movie.dart';
+import '../models/movie.dart';
 
 // allows to be called in other widgets
 final movieServiceProvider = Provider<MovieService>((ref) {
-  final apiKey = 'YOUR API KEY HERE';
+  final apiKey = '6578f8355159d1d3f5bf00923aea9cce';
   return MovieService(apiKey, Dio());
 });
 

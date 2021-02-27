@@ -1,10 +1,8 @@
-import 'dart:io';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
-import 'package:noname/objects/movie.dart';
-import 'package:noname/widgets/custom_app_bar.dart';
+import 'package:noname/models/movie.dart';
+import 'package:noname/widgets/widgets.dart';
 
 import '../repositories/movie_service.dart';
 
@@ -24,6 +22,7 @@ class Home extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 80.0),
         child: CustomAppBar(),
