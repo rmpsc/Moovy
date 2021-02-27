@@ -28,7 +28,7 @@ class Home extends ConsumerWidget {
         preferredSize: Size(screenSize.width, 80.0),
         child: CustomAppBar(),
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xff151c26),
       body: watch(moviesFutureProvider).when(
         error: (e, s) {
           return Text("error");

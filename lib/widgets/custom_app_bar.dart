@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget {
         vertical: 12.0,
         horizontal: 20.0,
       ),
-      color: Colors.black,
+      color: Color(0xff151c26),
       child: Row(
         children: [
           Image.asset('assets/tr_moovy_logo2.gif'),
