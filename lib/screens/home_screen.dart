@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:noname/models/movie.dart';
 import 'package:noname/widgets/widgets.dart';
-
-import '../repositories/movie_service.dart';
+import '../services/movie_service.dart';
 
 final moviesFutureProvider =
     FutureProvider.autoDispose<List<Movie>>((ref) async {
@@ -12,9 +11,13 @@ final moviesFutureProvider =
   ref.maintainState = true;
 
   // use watch instead of read if you expect variable to change
-  final movieService = ref.read(movieServiceProvider); // movie_service object
-  final movies = await movieService.getMovies(); // movie list
-  return movies;
+  final movieService = ref.read(movieServiceProvider); // popular_service object
+  final popularMovies = await movieService.getPopularMovies(); // popular movie list
+  final nowPlayingMovies = await movieService.getNowPlayingMovies();
+  final upcomingMovies = await movieService.getUpcomingMovies();
+  final topRatedMovies = await movieService.getTopRatedMovies();
+
+  return popularMovies;
 });
 
 class Home extends ConsumerWidget {
@@ -22,7 +25,7 @@ class Home extends ConsumerWidget {
   Widget build(BuildContext context, ScopedReader watch) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 80.0),
         child: CustomAppBar(),
@@ -34,17 +37,15 @@ class Home extends ConsumerWidget {
         },
         loading: () => Center(child: CircularProgressIndicator()),
         data: (movies) {
-          return RefreshIndicator(
-            onRefresh: () {
-              return context.refresh(moviesFutureProvider);
-            },
-            child: GridView.extent(
-              maxCrossAxisExtent: 300,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 0.67,
-              children: movies.map((movie) => _MovieBox(movie : movie)).toList(),
-            ),
+          return CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: ContentList(
+                  title: 'Popular',
+                  contentList: movies,
+                ),
+              ),
+            ],
           );
         },
       ),
