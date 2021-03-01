@@ -8,7 +8,8 @@
 Developed by No Name  
 `Romel Pascua | Jarred Dee | Jimmy Tran | Danny Nguyen | Daniel Nguyen`
 
-#
+## Current Version
+![Alt Text](https://media.giphy.com/media/wzUeeoL1B6OkFaKx20/giphy.gif)
 
 ### Instructions
 - Run `flutter pub get`
