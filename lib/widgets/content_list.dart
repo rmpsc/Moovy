@@ -4,13 +4,13 @@ import 'package:noname/models/models.dart';
 class ContentList extends StatelessWidget {
   final String title;
   final List<Movie> contentList;
-  final bool isOriginals;
+  final bool isTopRated;
 
   const ContentList({
     Key key,
     @required this.title,
     @required this.contentList,
-    this.isOriginals = false,
+    this.isTopRated = false,
   }) : super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class ContentList extends StatelessWidget {
             ),
           ),
           Container(
-            height: isOriginals ? 500.0 : 220.0,
+            height: isTopRated ? 500.0 : 220.0,
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(
                 vertical: 12.0,
@@ -46,11 +46,10 @@ class ContentList extends StatelessWidget {
                 onTap: () => print(content.title),
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  height: isOriginals ? 400.0 : 200.0,
-                  width: isOriginals ? 200.0 : 130.0,
+                  height: isTopRated ? 400.0 : 200.0,
+                  width: isTopRated ? 200.0 : 130.0,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      //image: AssetImage(content.posterPath),
                       image: NetworkImage(content.fullImageUrl),
                       fit: BoxFit.cover,
                     ),

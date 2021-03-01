@@ -39,7 +39,7 @@ class MovieService {
         .map((movieData) => Movie.fromMap(movieData))
         .toList(growable: false);
 
-    return nowPlayingMovies;
+    return nowPlayingMovies.reversed.toList();
   }
 
   Future<List<Movie>> getUpcomingMovies() async {
@@ -53,7 +53,7 @@ class MovieService {
         .map((movieData) => Movie.fromMap(movieData))
         .toList(growable: false);
 
-    return upcomingMovies;
+    return upcomingMovies.reversed.toList();
   }
 
   Future<List<Movie>> getTopRatedMovies() async {

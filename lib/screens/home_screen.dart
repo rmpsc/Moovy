@@ -1,23 +1,31 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:noname/models/movie.dart';
 import 'package:noname/widgets/widgets.dart';
 import '../services/movie_service.dart';
 
 final moviesFutureProvider =
-    FutureProvider.autoDispose<List<Movie>>((ref) async {
+    FutureProvider.autoDispose<Map<String, List>>((ref) async {
   // keeps state even when not being used
   ref.maintainState = true;
 
   // use watch instead of read if you expect variable to change
   final movieService = ref.read(movieServiceProvider); // popular_service object
-  final popularMovies = await movieService.getPopularMovies(); // popular movie list
-  final nowPlayingMovies = await movieService.getNowPlayingMovies();
-  final upcomingMovies = await movieService.getUpcomingMovies();
-  final topRatedMovies = await movieService.getTopRatedMovies();
+  final popular =
+      await movieService.getPopularMovies(); // popular movie list
+  final nowPlaying = await movieService.getNowPlayingMovies();
+  final upcoming = await movieService.getUpcomingMovies();
+  final topRated = await movieService.getTopRatedMovies();
 
-  return popularMovies;
+  Map movieMap = new Map<String, List>();
+  movieMap['popular'] = popular;
+  movieMap['nowPlaying'] = nowPlaying;
+  movieMap['upcoming'] = upcoming;
+  movieMap['topRated'] = topRated;
+
+  return movieMap;
 });
 
 class Home extends ConsumerWidget {
@@ -42,7 +50,26 @@ class Home extends ConsumerWidget {
               SliverToBoxAdapter(
                 child: ContentList(
                   title: 'Popular',
-                  contentList: movies,
+                  contentList: movies['popular'],
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: ContentList(
+                  title: 'Top Rated',
+                  contentList: movies['topRated'],
+                  isTopRated: true,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: ContentList(
+                  title: 'Now Playing',
+                  contentList: movies['nowPlaying'],
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: ContentList(
+                  title: 'Upcoming',
+                  contentList: movies['upcoming'],
                 ),
               ),
             ],
@@ -52,52 +79,3 @@ class Home extends ConsumerWidget {
     );
   }
 }
-
-class _MovieBox extends StatelessWidget {
-  final Movie movie;
-
-  const _MovieBox({Key key, this.movie}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Image.network(
-          movie.fullImageUrl,
-          fit: BoxFit.cover,
-          width: double.infinity,
-        ),
-      ],
-    );
-  }
-}
-/*
-class _FrontBanner extends StatelessWidget {
-  const _FrontBanner({
-    Key key,
-    @required this.text,
-  }) : super(key: key);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        child: Container(
-          color: Colors.grey.shade200.withOpacity(0.5),
-          height: 60,
-          child: Center(
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.bodyText2,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-*/

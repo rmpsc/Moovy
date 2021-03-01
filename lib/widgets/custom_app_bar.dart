@@ -8,6 +8,7 @@ class CustomAppBar extends StatelessWidget {
         vertical: 12.0,
         horizontal: 20.0,
       ),
+      //color: Color(0xff151c26),
       color: Color(0xff151c26),
       child: Row(
         children: [
