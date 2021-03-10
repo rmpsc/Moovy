@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
+import 'package:noname/screens/movie_info_screen.dart';
 
 class ContentList extends StatelessWidget {
   final String title;
@@ -41,22 +42,30 @@ class ContentList extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: contentList.length,
               itemBuilder: (BuildContext context, int index) {
-              final Movie content = contentList[index];
-              return GestureDetector(
-                onTap: () => print(content.title),
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  height: isTopRated ? 400.0 : 200.0,
-                  width: isTopRated ? 200.0 : 130.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(content.fullImageUrl),
-                      fit: BoxFit.cover,
+                final Movie content = contentList[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            MovieInfoScreen(movie: contentList[index]),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    height: isTopRated ? 400.0 : 200.0,
+                    width: isTopRated ? 200.0 : 130.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(content.fullImageUrl),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-              );
-             },
+                );
+              },
             ),
           ),
         ],
