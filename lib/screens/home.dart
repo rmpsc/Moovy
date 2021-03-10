@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noname/pages/authenticate/login.dart';
+import 'package:noname/screens/authenticate/login.dart';
 import 'package:noname/services/auth.dart';
 
 class Home extends StatefulWidget {

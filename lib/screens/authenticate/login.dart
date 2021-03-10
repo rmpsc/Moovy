@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:noname/pages/authenticate/reg.dart';
-import 'package:noname/pages/authenticate/register.dart';
-import 'package:noname/pages/home.dart';
-import 'package:noname/pages/pwreset.dart';
+import 'package:noname/screens/authenticate/reg.dart';
+import 'package:noname/screens/authenticate/register.dart';
+import 'package:noname/screens/home.dart';
+import 'package:noname/screens/pwreset.dart';
 import 'package:noname/services/auth.dart';
 
 class Login extends StatefulWidget {

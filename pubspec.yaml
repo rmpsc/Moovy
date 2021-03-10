@@ -38,6 +38,14 @@ dependencies:
   # For linting project
   lint: ^1.0.0
 
+  # Provider
+  provider: ^5.0.0
+
+  # Firebase
+  firebase_auth: ^0.16.1
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -55,7 +63,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-      - logo.png
+      - assets/
   fonts:
       - family: Montserrat
         fonts:
