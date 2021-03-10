@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:noname/screens/authenticate/login.dart';
-import 'package:noname/screens/authenticate/register.dart';
-import 'package:noname/screens/home.dart';
-import 'package:noname/screens/pwreset.dart';
+import 'package:noname/screens/screens.dart';
 import 'package:noname/services/auth.dart';
 
 class Reg extends StatefulWidget {
@@ -24,14 +21,14 @@ class _RegState extends State<Reg> {
   String email = '';
   String password = '';
   String error = '';
-  String err = "PlatformException(ERROR_EMAIL_ALREADY_IN_USE, The email address is already in use by another account., null, null)";
-
+  String err =
+      "PlatformException(ERROR_EMAIL_ALREADY_IN_USE, The email address is already in use by another account., null, null)";
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   @override
   Widget build(BuildContext context) {
     final emailField = TextFormField(
-        validator: (val) => val.isEmpty  ? "Enter an email" : null,
+        validator: (val) => val.isEmpty ? "Enter an email" : null,
         //key: _formKey,
         onChanged: (val) {
           setState(() => email = val);
@@ -52,7 +49,8 @@ class _RegState extends State<Reg> {
             fillColor: Color(0xffF8A99F),
             filled: true));
     final passwordField = TextFormField(
-      validator: (val) => val.length < 6 ? "Enter a password longer than 6 character" : null,
+      validator: (val) =>
+          val.length < 6 ? "Enter a password longer than 6 character" : null,
       //key: _formKey,
       onChanged: (val) {
         setState(() => password = val);
@@ -84,13 +82,13 @@ class _RegState extends State<Reg> {
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () async {
-              if(_formKey.currentState.validate()){
-                dynamic result = await _auth.registerWithEmailandPassword(email, password);
+              if (_formKey.currentState.validate()) {
+                dynamic result =
+                    await _auth.registerWithEmailandPassword(email, password);
 
-                if (result == null){
+                if (result == null) {
                   setState(() => error = 'Invalid email');
-                }
-                else if (result ==err) {
+                } else if (result == err) {
                   setState(() => error = 'Email already in use');
                 }
               }
@@ -100,7 +98,7 @@ class _RegState extends State<Reg> {
               //print(email);
               //print(password);
               //Navigator.push(
-                  //context, MaterialPageRoute(builder: (context) => Login()));
+              //context, MaterialPageRoute(builder: (context) => Login()));
             },
             child: Text("Register",
                 textAlign: TextAlign.center,
@@ -108,7 +106,6 @@ class _RegState extends State<Reg> {
                     color: Colors.white, fontWeight: FontWeight.bold)),
           ),
         ));
-
 
     final fgtpw = Container(
       height: 20,
@@ -162,16 +159,15 @@ class _RegState extends State<Reg> {
 
     final userInput = Container(
       child: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
+          key: _formKey,
+          child: Column(children: <Widget>[
             emailField,
             SizedBox(height: 10.0),
             passwordField,
-            SizedBox(height: 10.0,),
-          ]
-        )
-      ),
+            SizedBox(
+              height: 10.0,
+            ),
+          ])),
     );
 
     return Scaffold(
@@ -191,7 +187,6 @@ class _RegState extends State<Reg> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                
                 SizedBox(
                   height: 150.0,
                   child: Image.asset(
@@ -209,16 +204,13 @@ class _RegState extends State<Reg> {
                 SizedBox(
                   height: 12.0,
                 ),
-                Text(
-                  error,
-                  style: TextStyle( 
-                    color: Colors.red,
-                    fontFamily: 'Montserrat',
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    )
-                  
-                ),
+                Text(error,
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontFamily: 'Montserrat',
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    )),
                 SizedBox(
                   height: 40.0,
                 ),

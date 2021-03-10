@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:noname/screens/authenticate/login.dart';
 import 'package:noname/services/auth.dart';
 
-class Home extends StatefulWidget {
+class Home2 extends StatefulWidget {
 
 
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home2> {
 
   final AuthService _auth = AuthService();
 

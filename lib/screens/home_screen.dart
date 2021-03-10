@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/all.dart';
-import 'package:noname/models/movie.dart';
 import 'package:noname/widgets/widgets.dart';
 import '../services/movie_service.dart';
 
