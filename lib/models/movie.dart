@@ -15,7 +15,9 @@ class Movie {
     this.releaseDate,
   });
 
-  String get fullImageUrl => 'https://image.tmdb.org/t/p/w200$posterPath';
+  String get smallImageUrl => 'https://image.tmdb.org/t/p/w200$posterPath';
+  String get fullImageUrl => 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2$posterPath';
+
 
   Map<String, dynamic> toMap() {
     return {

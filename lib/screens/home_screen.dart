@@ -12,14 +12,14 @@ final moviesFutureProvider =
 
   // use watch instead of read if you expect variable to change
   final movieService = ref.read(movieServiceProvider); // popular_service object
-  final popular =
-      await movieService.getPopularMovies(); // popular movie list
+  final popular = await movieService.getPopularMovies(); // popular movie list
   final nowPlaying = await movieService.getNowPlayingMovies();
   final upcoming = await movieService.getUpcomingMovies();
   final topRated = await movieService.getTopRatedMovies();
 
   Map movieMap = new Map<String, List>();
-  movieMap['popular'] = popular;
+  movieMap['featured'] = popular.sublist(0, 1);
+  movieMap['popular'] = popular.sublist(1);
   movieMap['nowPlaying'] = nowPlaying;
   movieMap['upcoming'] = upcoming;
   movieMap['topRated'] = topRated;
@@ -46,6 +46,9 @@ class Home extends ConsumerWidget {
         data: (movies) {
           return CustomScrollView(
             slivers: [
+              SliverToBoxAdapter(
+                child: ContentHeader(featuredContent: movies['featured']),
+              ),
               SliverToBoxAdapter(
                 child: ContentList(
                   title: 'Popular',

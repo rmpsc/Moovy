@@ -26,7 +26,7 @@ class MovieInfoScreen extends StatelessWidget {
           Row(children: [
             Container(
               child: Image.network(
-                movie.fullImageUrl,
+                movie.smallImageUrl,
                 scale: 1.1,
               ),
             ),
