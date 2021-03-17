@@ -1,0 +1,323 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/rendering/paragraph.dart', 'packages/flutter/src/cupertino/text_theme.dart', 'packages/flutter/src/cupertino/button.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/painting/edge_insets.dart'], (function load__packages__flutter__src__cupertino__text_selection_toolbar_button_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__rendering__paragraph$46dart, packages__flutter__src__cupertino__text_theme$46dart, packages__flutter__src__cupertino__button$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__painting__edge_insets$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const text$ = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const paragraph = packages__flutter__src__rendering__paragraph$46dart.src__rendering__paragraph;
+  const colors = packages__flutter__src__cupertino__text_theme$46dart.src__cupertino__colors;
+  const button = packages__flutter__src__cupertino__button$46dart.src__cupertino__button;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  var text_selection_toolbar_button = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 10,
+        [_Location_line]: 40,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "overflow",
+        [_Location_column]: 10,
+        [_Location_line]: 41,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 10,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 39,
+        [_Location_file]: "file:///C:/Users/016859308/Desktop/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar_button.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "borderRadius",
+        [_Location_column]: 7,
+        [_Location_line]: 63,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 7,
+        [_Location_line]: 64,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "disabledColor",
+        [_Location_column]: 7,
+        [_Location_line]: 65,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 7,
+        [_Location_line]: 66,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "pressedOpacity",
+        [_Location_column]: 7,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 69,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[6] || CT.C6,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 62,
+        [_Location_file]: "file:///C:/Users/016859308/Desktop/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar_button.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 3
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: -0.15,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[15] || CT.C15,
+        [TextStyle_fontSize]: 14,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: false
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 3944751136.0
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 16,
+        [EdgeInsets_right]: 18,
+        [EdgeInsets_top]: 16,
+        [EdgeInsets_left]: 18
+      });
+    }
+  }, false);
+  var C = Array(18).fill(void 0);
+  var I = [
+    "file:///C:/Users/016859308/Desktop/flutter/packages/flutter/lib/src/cupertino/text_selection_toolbar_button.dart",
+    "package:flutter/src/cupertino/text_selection_toolbar_button.dart"
+  ];
+  var child$ = dart.privateName(text_selection_toolbar_button, "CupertinoTextSelectionToolbarButton.child");
+  var onPressed$ = dart.privateName(text_selection_toolbar_button, "CupertinoTextSelectionToolbarButton.onPressed");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  text_selection_toolbar_button.CupertinoTextSelectionToolbarButton = class CupertinoTextSelectionToolbarButton extends framework.StatelessWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get onPressed() {
+      return this[onPressed$];
+    }
+    set onPressed(value) {
+      super.onPressed = value;
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 61, 29, "context");
+      return new button.CupertinoButton.new({borderRadius: null, color: text_selection_toolbar_button._kToolbarBackgroundColor, disabledColor: text_selection_toolbar_button._kToolbarBackgroundColor, onPressed: this.onPressed, padding: text_selection_toolbar_button._kToolbarButtonPadding, pressedOpacity: this.onPressed == null ? 1.0 : 0.7, child: this.child, $creationLocationd_0dea112b090073317d4: C[5] || CT.C5});
+    }
+  };
+  (text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let onPressed = opts && 'onPressed' in opts ? opts.onPressed : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    if (child == null) dart.nullFailed(I[0], 30, 19, "child");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[onPressed$] = onPressed;
+    this[child$] = child;
+    text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.prototype;
+  (text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.text = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let onPressed = opts && 'onPressed' in opts ? opts.onPressed : null;
+    let text = opts && 'text' in opts ? opts.text : null;
+    if (text == null) dart.nullFailed(I[0], 38, 21, "text");
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[onPressed$] = onPressed;
+    this[child$] = new text$.Text.new(text, {overflow: paragraph.TextOverflow.ellipsis, style: text_selection_toolbar_button._kToolbarButtonFontStyle.copyWith({color: onPressed != null ? colors.CupertinoColors.white : colors.CupertinoColors.inactiveGray}), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+    text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.prototype;
+  dart.addTypeTests(text_selection_toolbar_button.CupertinoTextSelectionToolbarButton);
+  dart.addTypeCaches(text_selection_toolbar_button.CupertinoTextSelectionToolbarButton);
+  dart.setMethodSignature(text_selection_toolbar_button.CupertinoTextSelectionToolbarButton, () => ({
+    __proto__: dart.getMethods(text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.__proto__),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(text_selection_toolbar_button.CupertinoTextSelectionToolbarButton, I[1]);
+  dart.setFieldSignature(text_selection_toolbar_button.CupertinoTextSelectionToolbarButton, () => ({
+    __proto__: dart.getFields(text_selection_toolbar_button.CupertinoTextSelectionToolbarButton.__proto__),
+    child: dart.finalFieldType(framework.Widget),
+    onPressed: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [])))
+  }));
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var FontWeight_index = dart.privateName(ui, "FontWeight.index");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  dart.defineLazy(text_selection_toolbar_button, {
+    /*text_selection_toolbar_button._kToolbarButtonFontStyle*/get _kToolbarButtonFontStyle() {
+      return C[14] || CT.C14;
+    },
+    /*text_selection_toolbar_button._kToolbarBackgroundColor*/get _kToolbarBackgroundColor() {
+      return C[16] || CT.C16;
+    },
+    /*text_selection_toolbar_button._kToolbarButtonPadding*/get _kToolbarButtonPadding() {
+      return C[17] || CT.C17;
+    }
+  }, false);
+  dart.trackLibraries("packages/flutter/src/cupertino/text_selection_toolbar_button.dart", {
+    "package:flutter/src/cupertino/text_selection_toolbar_button.dart": text_selection_toolbar_button
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["text_selection_toolbar_button.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAoDe;;;;;;IAKO;;;;;;;UAGM;AACxB,YAAO,+CACS,aACP,uEACQ,mEACJ,yBACF,sEACO,AAAU,yBAAU,MAAM,YACnC;IAEX;;;QA3CO;QACA;QACS;;;IADT;IACS;AACX,qGAAW,GAAG;;EAAC;;QAKb;QACA;QACW;;;IADX;IAEI,eAAE,mBACN,IAAI,aACmB,wCAChB,AAAyB,wEACvB,AAAU,SAAD,WAA2B,+BAAwB;AAGvE,qGAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;MApCN,sDAAwB;;;MAS5B,sDAAwB;;;MAGnB,oDAAsB","file":"../../../../../../../../../../D:/packages/flutter/src/cupertino/text_selection_toolbar_button.dart.lib.js"}');
+  // Exports:
+  return {
+    src__cupertino__text_selection_toolbar_button: text_selection_toolbar_button
+  };
+}));
+
+//# sourceMappingURL=text_selection_toolbar_button.dart.lib.js.map

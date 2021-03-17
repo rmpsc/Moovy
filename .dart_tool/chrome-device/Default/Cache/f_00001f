@@ -1,0 +1,471 @@
+define(['dart_sdk', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/decoration_image.dart', 'packages/flutter/src/foundation/debug.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/decoration.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/widgets/layout_builder.dart', 'packages/flutter/src/painting/matrix_utils.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/vector_math/vector_math_64.dart'], (function load__packages__flutter__src__material__ink_decoration_dart(dart_sdk, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__decoration_image$46dart, packages__flutter__src__foundation__debug$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__decoration$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__widgets__layout_builder$46dart, packages__flutter__src__painting__matrix_utils$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__vector_math__vector_math_64$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const decoration_image = packages__flutter__src__painting__decoration_image$46dart.src__painting__decoration_image;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const decoration = packages__flutter__src__painting__decoration$46dart.src__painting__decoration;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const image = packages__flutter__src__widgets__widget_span$46dart.src__widgets__image;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const debug = packages__flutter__src__material__icon_button$46dart.src__material__debug;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const layout_builder = packages__flutter__src__widgets__layout_builder$46dart.src__widgets__layout_builder;
+  const matrix_utils = packages__flutter__src__painting__matrix_utils$46dart.src__painting__matrix_utils;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  var ink_decoration = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    DiagnosticsPropertyOfEdgeInsetsGeometry: () => (T.DiagnosticsPropertyOfEdgeInsetsGeometry = dart.constFn(diagnostics.DiagnosticsProperty$(edge_insets.EdgeInsetsGeometry)))(),
+    DiagnosticsPropertyOfDecoration: () => (T.DiagnosticsPropertyOfDecoration = dart.constFn(diagnostics.DiagnosticsProperty$(decoration.Decoration)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: decoration_image.ImageRepeat.prototype,
+        [_name]: "ImageRepeat.noRepeat",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 25,
+        [_Location_line]: 268,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 52,
+        [_Location_line]: 268,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[4] || CT.C4, C[5] || CT.C5], T._LocationL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[3] || CT.C3,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 268,
+        [_Location_file]: "file:///C:/Users/016859308/Desktop/flutter/packages/flutter/lib/src/material/ink_decoration.dart"
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([], T._LocationL());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[7] || CT.C7,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 269,
+        [_Location_file]: "file:///C:/Users/016859308/Desktop/flutter/packages/flutter/lib/src/material/ink_decoration.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 276,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 21,
+        [_Location_line]: 275,
+        [_Location_file]: "file:///C:/Users/016859308/Desktop/flutter/packages/flutter/lib/src/material/ink_decoration.dart"
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 9,
+        [_Location_line]: 280,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 9,
+        [_Location_line]: 281,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 282,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.constList([C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[12] || CT.C12,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 279,
+        [_Location_file]: "file:///C:/Users/016859308/Desktop/flutter/packages/flutter/lib/src/material/ink_decoration.dart"
+      });
+    }
+  }, false);
+  var C = Array(16).fill(void 0);
+  var I = [
+    "file:///C:/Users/016859308/Desktop/flutter/packages/flutter/lib/src/material/ink_decoration.dart",
+    "package:flutter/src/material/ink_decoration.dart"
+  ];
+  var child$ = dart.privateName(ink_decoration, "Ink.child");
+  var padding$ = dart.privateName(ink_decoration, "Ink.padding");
+  var decoration$ = dart.privateName(ink_decoration, "Ink.decoration");
+  var width$ = dart.privateName(ink_decoration, "Ink.width");
+  var height$ = dart.privateName(ink_decoration, "Ink.height");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var _name = dart.privateName(decoration_image, "_name");
+  var _paddingIncludingDecoration = dart.privateName(ink_decoration, "_paddingIncludingDecoration");
+  ink_decoration.Ink = class Ink extends framework.StatefulWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get padding() {
+      return this[padding$];
+    }
+    set padding(value) {
+      super.padding = value;
+    }
+    get decoration() {
+      return this[decoration$];
+    }
+    set decoration(value) {
+      super.decoration = value;
+    }
+    get width() {
+      return this[width$];
+    }
+    set width(value) {
+      super.width = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get [_paddingIncludingDecoration]() {
+      if (this.decoration == null || dart.nullCheck(this.decoration).padding == null) return this.padding;
+      let decorationPadding = dart.nullCheck(this.decoration).padding;
+      if (this.padding == null) return decorationPadding;
+      return dart.nullCheck(this.padding).add(dart.nullCheck(decorationPadding));
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 228, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new (T.DiagnosticsPropertyOfEdgeInsetsGeometry()).new("padding", this.padding, {defaultValue: null}));
+      properties.add(new (T.DiagnosticsPropertyOfDecoration()).new("bg", this.decoration, {defaultValue: null}));
+    }
+    createState() {
+      return new ink_decoration._InkState.new();
+    }
+  };
+  (ink_decoration.Ink.new = function(opts) {
+    let t0;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let color = opts && 'color' in opts ? opts.color : null;
+    let decoration = opts && 'decoration' in opts ? opts.decoration : null;
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[padding$] = padding;
+    this[width$] = width;
+    this[height$] = height;
+    this[child$] = child;
+    if (!(padding == null || dart.test(padding.isNonNegative))) dart.assertFailed(null, I[0], 129, 15, "padding == null || padding.isNonNegative");
+    if (!(decoration == null || dart.test(decoration.debugAssertIsValid()))) dart.assertFailed(null, I[0], 130, 15, "decoration == null || decoration.debugAssertIsValid()");
+    if (!(color == null || decoration == null)) dart.assertFailed("Cannot provide both a color and a decoration\n" + "The color argument is just a shorthand for \"decoration: BoxDecoration(color: color)\".", I[0], 131, 15, "color == null || decoration == null");
+    this[decoration$] = (t0 = decoration, t0 == null ? color != null ? new box_decoration.BoxDecoration.new({color: color}) : null : t0);
+    ink_decoration.Ink.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = ink_decoration.Ink.prototype;
+  (ink_decoration.Ink.image = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let image = opts && 'image' in opts ? opts.image : null;
+    if (image == null) dart.nullFailed(I[0], 158, 28, "image");
+    let onImageError = opts && 'onImageError' in opts ? opts.onImageError : null;
+    let colorFilter = opts && 'colorFilter' in opts ? opts.colorFilter : null;
+    let fit = opts && 'fit' in opts ? opts.fit : null;
+    let alignment = opts && 'alignment' in opts ? opts.alignment : C[0] || CT.C0;
+    if (alignment == null) dart.nullFailed(I[0], 162, 23, "alignment");
+    let centerSlice = opts && 'centerSlice' in opts ? opts.centerSlice : null;
+    let repeat = opts && 'repeat' in opts ? opts.repeat : C[1] || CT.C1;
+    if (repeat == null) dart.nullFailed(I[0], 164, 17, "repeat");
+    let matchTextDirection = opts && 'matchTextDirection' in opts ? opts.matchTextDirection : false;
+    if (matchTextDirection == null) dart.nullFailed(I[0], 165, 10, "matchTextDirection");
+    let width = opts && 'width' in opts ? opts.width : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[padding$] = padding;
+    this[width$] = width;
+    this[height$] = height;
+    this[child$] = child;
+    if (!(padding == null || dart.test(padding.isNonNegative))) dart.assertFailed(null, I[0], 169, 15, "padding == null || padding.isNonNegative");
+    if (!(image != null)) dart.assertFailed(null, I[0], 170, 15, "image != null");
+    if (!(alignment != null)) dart.assertFailed(null, I[0], 171, 15, "alignment != null");
+    if (!(repeat != null)) dart.assertFailed(null, I[0], 172, 15, "repeat != null");
+    if (!(matchTextDirection != null)) dart.assertFailed(null, I[0], 173, 15, "matchTextDirection != null");
+    this[decoration$] = new box_decoration.BoxDecoration.new({image: new decoration_image.DecorationImage.new({image: image, onError: onImageError, colorFilter: colorFilter, fit: fit, alignment: alignment, centerSlice: centerSlice, repeat: repeat, matchTextDirection: matchTextDirection})});
+    ink_decoration.Ink.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = ink_decoration.Ink.prototype;
+  dart.addTypeTests(ink_decoration.Ink);
+  dart.addTypeCaches(ink_decoration.Ink);
+  dart.setMethodSignature(ink_decoration.Ink, () => ({
+    __proto__: dart.getMethods(ink_decoration.Ink.__proto__),
+    createState: dart.fnType(ink_decoration._InkState, [])
+  }));
+  dart.setGetterSignature(ink_decoration.Ink, () => ({
+    __proto__: dart.getGetters(ink_decoration.Ink.__proto__),
+    [_paddingIncludingDecoration]: dart.nullable(edge_insets.EdgeInsetsGeometry)
+  }));
+  dart.setLibraryUri(ink_decoration.Ink, I[1]);
+  dart.setFieldSignature(ink_decoration.Ink, () => ({
+    __proto__: dart.getFields(ink_decoration.Ink.__proto__),
+    child: dart.finalFieldType(dart.nullable(framework.Widget)),
+    padding: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsetsGeometry)),
+    decoration: dart.finalFieldType(dart.nullable(decoration.Decoration)),
+    width: dart.finalFieldType(dart.nullable(core.double)),
+    height: dart.finalFieldType(dart.nullable(core.double))
+  }));
+  var _ink = dart.privateName(ink_decoration, "_ink");
+  var _handleRemoved = dart.privateName(ink_decoration, "_handleRemoved");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _build = dart.privateName(ink_decoration, "_build");
+  ink_decoration._InkState = class _InkState extends framework.State$(ink_decoration.Ink) {
+    [_handleRemoved]() {
+      this[_ink] = null;
+    }
+    deactivate() {
+      let t0;
+      t0 = this[_ink];
+      t0 == null ? null : t0.dispose();
+      if (!(this[_ink] == null)) dart.assertFailed(null, I[0], 248, 12, "_ink == null");
+      super.deactivate();
+    }
+    [_build](context, constraints) {
+      let t0;
+      if (context == null) dart.nullFailed(I[0], 252, 30, "context");
+      if (constraints == null) dart.nullFailed(I[0], 252, 54, "constraints");
+      if (this[_ink] == null) {
+        this[_ink] = new ink_decoration.InkDecoration.new({decoration: this.widget.decoration, configuration: image.createLocalImageConfiguration(context), controller: dart.nullCheck(material.Material.of(context)), referenceBox: box.RenderBox.as(dart.nullCheck(context.findRenderObject())), onRemoved: dart.bind(this, _handleRemoved)});
+      } else {
+        dart.nullCheck(this[_ink]).decoration = this.widget.decoration;
+        dart.nullCheck(this[_ink]).configuration = image.createLocalImageConfiguration(context);
+      }
+      let current = this.widget.child;
+      let effectivePadding = this.widget[_paddingIncludingDecoration];
+      if (effectivePadding != null) current = new basic.Padding.new({padding: effectivePadding, child: current, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2});
+      t0 = current;
+      return t0 == null ? new container.Container.new({$creationLocationd_0dea112b090073317d4: C[6] || CT.C6}) : t0;
+    }
+    build(context) {
+      if (context == null) dart.nullFailed(I[0], 273, 29, "context");
+      if (!dart.test(debug.debugCheckHasMaterial(context))) dart.assertFailed(null, I[0], 274, 12, "debugCheckHasMaterial(context)");
+      let result = new layout_builder.LayoutBuilder.new({builder: dart.bind(this, _build), $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+      if (this.widget.width != null || this.widget.height != null) {
+        result = new basic.SizedBox.new({width: this.widget.width, height: this.widget.height, child: result, $creationLocationd_0dea112b090073317d4: C[11] || CT.C11});
+      }
+      return result;
+    }
+  };
+  (ink_decoration._InkState.new = function() {
+    this[_ink] = null;
+    ink_decoration._InkState.__proto__.new.call(this);
+    ;
+  }).prototype = ink_decoration._InkState.prototype;
+  dart.addTypeTests(ink_decoration._InkState);
+  dart.addTypeCaches(ink_decoration._InkState);
+  dart.setMethodSignature(ink_decoration._InkState, () => ({
+    __proto__: dart.getMethods(ink_decoration._InkState.__proto__),
+    [_handleRemoved]: dart.fnType(dart.void, []),
+    [_build]: dart.fnType(framework.Widget, [framework.BuildContext, box.BoxConstraints]),
+    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }));
+  dart.setLibraryUri(ink_decoration._InkState, I[1]);
+  dart.setFieldSignature(ink_decoration._InkState, () => ({
+    __proto__: dart.getFields(ink_decoration._InkState.__proto__),
+    [_ink]: dart.fieldType(dart.nullable(ink_decoration.InkDecoration))
+  }));
+  var _painter = dart.privateName(ink_decoration, "_painter");
+  var _decoration = dart.privateName(ink_decoration, "_decoration");
+  var _configuration = dart.privateName(ink_decoration, "_configuration");
+  var _handleChanged = dart.privateName(ink_decoration, "_handleChanged");
+  ink_decoration.InkDecoration = class InkDecoration extends material.InkFeature {
+    get decoration() {
+      return this[_decoration];
+    }
+    set decoration(value) {
+      let t0, t0$;
+      if (dart.equals(value, this[_decoration])) return;
+      this[_decoration] = value;
+      t0 = this[_painter];
+      t0 == null ? null : t0.dispose();
+      this[_painter] = (t0$ = this[_decoration], t0$ == null ? null : t0$.createBoxPainter(dart.bind(this, _handleChanged)));
+      this.controller.markNeedsPaint();
+    }
+    get configuration() {
+      return this[_configuration];
+    }
+    set configuration(value) {
+      if (value == null) dart.nullFailed(I[0], 343, 40, "value");
+      if (!(value != null)) dart.assertFailed(null, I[0], 344, 12, "value != null");
+      if (dart.equals(value, this[_configuration])) return;
+      this[_configuration] = value;
+      this.controller.markNeedsPaint();
+    }
+    [_handleChanged]() {
+      this.controller.markNeedsPaint();
+    }
+    dispose() {
+      let t0;
+      t0 = this[_painter];
+      t0 == null ? null : t0.dispose();
+      super.dispose();
+    }
+    paintFeature(canvas, transform) {
+      if (canvas == null) dart.nullFailed(I[0], 362, 28, "canvas");
+      if (transform == null) dart.nullFailed(I[0], 362, 44, "transform");
+      if (this[_painter] == null) return;
+      let originOffset = matrix_utils.MatrixUtils.getAsTranslation(transform);
+      let sizedConfiguration = this.configuration.copyWith({size: this.referenceBox.size});
+      if (originOffset == null) {
+        canvas.save();
+        canvas.transform(transform.storage);
+        dart.nullCheck(this[_painter]).paint(canvas, ui.Offset.zero, sizedConfiguration);
+        canvas.restore();
+      } else {
+        dart.nullCheck(this[_painter]).paint(canvas, originOffset, sizedConfiguration);
+      }
+    }
+  };
+  (ink_decoration.InkDecoration.new = function(opts) {
+    let decoration = opts && 'decoration' in opts ? opts.decoration : null;
+    let configuration = opts && 'configuration' in opts ? opts.configuration : null;
+    if (configuration == null) dart.nullFailed(I[0], 308, 33, "configuration");
+    let controller = opts && 'controller' in opts ? opts.controller : null;
+    if (controller == null) dart.nullFailed(I[0], 309, 36, "controller");
+    let referenceBox = opts && 'referenceBox' in opts ? opts.referenceBox : null;
+    if (referenceBox == null) dart.nullFailed(I[0], 310, 24, "referenceBox");
+    let onRemoved = opts && 'onRemoved' in opts ? opts.onRemoved : null;
+    this[_painter] = null;
+    this[_decoration] = null;
+    if (!(configuration != null)) dart.assertFailed(null, I[0], 312, 15, "configuration != null");
+    this[_configuration] = configuration;
+    ink_decoration.InkDecoration.__proto__.new.call(this, {controller: controller, referenceBox: referenceBox, onRemoved: onRemoved});
+    this.decoration = decoration;
+    controller.addInkFeature(this);
+  }).prototype = ink_decoration.InkDecoration.prototype;
+  dart.addTypeTests(ink_decoration.InkDecoration);
+  dart.addTypeCaches(ink_decoration.InkDecoration);
+  dart.setMethodSignature(ink_decoration.InkDecoration, () => ({
+    __proto__: dart.getMethods(ink_decoration.InkDecoration.__proto__),
+    [_handleChanged]: dart.fnType(dart.void, []),
+    paintFeature: dart.fnType(dart.void, [ui.Canvas, vector_math_64.Matrix4])
+  }));
+  dart.setGetterSignature(ink_decoration.InkDecoration, () => ({
+    __proto__: dart.getGetters(ink_decoration.InkDecoration.__proto__),
+    decoration: dart.nullable(decoration.Decoration),
+    configuration: image_provider.ImageConfiguration
+  }));
+  dart.setSetterSignature(ink_decoration.InkDecoration, () => ({
+    __proto__: dart.getSetters(ink_decoration.InkDecoration.__proto__),
+    decoration: dart.nullable(decoration.Decoration),
+    configuration: image_provider.ImageConfiguration
+  }));
+  dart.setLibraryUri(ink_decoration.InkDecoration, I[1]);
+  dart.setFieldSignature(ink_decoration.InkDecoration, () => ({
+    __proto__: dart.getFields(ink_decoration.InkDecoration.__proto__),
+    [_painter]: dart.fieldType(dart.nullable(decoration.BoxPainter)),
+    [_decoration]: dart.fieldType(dart.nullable(decoration.Decoration)),
+    [_configuration]: dart.fieldType(image_provider.ImageConfiguration)
+  }));
+  dart.trackLibraries("packages/flutter/src/material/ink_decoration.dart", {
+    "package:flutter/src/material/ink_decoration.dart": ink_decoration
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["ink_decoration.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../D:/packages/flutter/src/material/ink_decoration.dart.lib.js"}');
+  // Exports:
+  return {
+    src__material__ink_decoration: ink_decoration
+  };
+}));
+
+//# sourceMappingURL=ink_decoration.dart.lib.js.map
