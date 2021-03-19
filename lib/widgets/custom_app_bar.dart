@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:noname/screens/settings.dart';
 class CustomAppBar extends StatelessWidget {
 
   @override
@@ -22,6 +22,16 @@ class CustomAppBar extends StatelessWidget {
                 _AppBarButton(title: 'Moovies', onTap: () => print('Moovies'),),
                 _AppBarButton(title: 'My List', onTap: () => print('My List'),),
                 _AppBarButton(title: 'Account', onTap: () => print('Account'),),
+                IconButton(
+                  icon: Icon(
+                    Icons.settings,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => SettingsPage()));
+                  },
+                ),
               ],
             ),
           ),
