@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:noname/theme.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -20,8 +21,9 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primaryColor,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: primaryColor,
         elevation: 1,
         leading: IconButton(
           onPressed: () {
@@ -29,7 +31,7 @@ class _SettingsPageState extends State<SettingsPage> {
           },
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.blue,
+            color: secondaryColor,
           ),
         ),
       ),
@@ -39,7 +41,7 @@ class _SettingsPageState extends State<SettingsPage> {
           children: [
             Text(
               "Settings",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Colors.white),
             ),
             SizedBox(
               height: 40,
@@ -48,20 +50,21 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Icon(
                   Icons.person,
-                  color: Colors.blue,
+                  color: secondaryColor,
                 ),
                 SizedBox(
                   width: 8,
                 ),
                 Text(
                   "Account",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
               ],
             ),
             Divider(
               height: 15,
               thickness: 2,
+              color: Colors.white,
             ),
             SizedBox(
               height: 10,
@@ -78,20 +81,21 @@ class _SettingsPageState extends State<SettingsPage> {
               children: [
                 Icon(
                   Icons.volume_up_outlined,
-                  color: Colors.blue,
+                  color: secondaryColor,
                 ),
                 SizedBox(
                   width: 8,
                 ),
                 Text(
                   "Notifications",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
                 ),
               ],
             ),
             Divider(
               height: 15,
               thickness: 2,
+              color: Colors.white,
             ),
             SizedBox(
               height: 10,
@@ -110,7 +114,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 onPressed: () {},
                 child: Text("SIGN OUT",
                     style: TextStyle(
-                        fontSize: 16, letterSpacing: 2.2, color: Colors.black)),
+                        fontSize: 16, letterSpacing: 2.2, color: Colors.white)),
               ),
             )
           ],
@@ -128,7 +132,7 @@ class _SettingsPageState extends State<SettingsPage> {
           style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: Colors.grey[600]),
+              color: Colors.white),
         ),
         Transform.scale(
           scale: 0.7,
@@ -187,12 +191,12 @@ class _SettingsPageState extends State<SettingsPage> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Colors.grey[600],
+                color: Colors.white,
               ),
             ),
             Icon(
               Icons.arrow_forward_ios,
-              color: Colors.grey,
+              color: Colors.white,
             ),
           ],
         ),
