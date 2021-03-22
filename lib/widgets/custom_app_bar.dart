@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noname/screens/settings.dart';
+import 'package:noname/screens/movieList.dart';
+
 class CustomAppBar extends StatelessWidget {
 
   @override
@@ -20,7 +22,11 @@ class CustomAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _AppBarButton(title: 'Moovies', onTap: () => print('Moovies'),),
-                _AppBarButton(title: 'My List', onTap: () => print('My List'),),
+                FlatButton(textColor: Colors.white,
+                onPressed: (){Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MovieList()));},
+                child: Text("My List"),
+                shape: CircleBorder(side: BorderSide(color: Colors.transparent))),
                 _AppBarButton(title: 'Account', onTap: () => print('Account'),),
                 IconButton(
                   icon: Icon(
