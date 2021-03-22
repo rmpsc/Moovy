@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:noname/widgets/widgets.dart';
 import '../services/movie_service.dart';
+import 'package:noname/theme.dart';
 
 final moviesFutureProvider =
     FutureProvider.autoDispose<Map<String, List>>((ref) async {
@@ -37,7 +38,7 @@ class Home extends ConsumerWidget {
         preferredSize: Size(screenSize.width, 80.0),
         child: CustomAppBar(),
       ),
-      backgroundColor: Color(0xff151c26),
+      backgroundColor: primaryColor,
       body: watch(moviesFutureProvider).when(
         error: (e, s) {
           return Text("error");
@@ -57,13 +58,6 @@ class Home extends ConsumerWidget {
               ),
               SliverToBoxAdapter(
                 child: ContentList(
-                  title: 'Top Rated',
-                  contentList: movies['topRated'],
-                  isTopRated: true,
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: ContentList(
                   title: 'Now Playing',
                   contentList: movies['nowPlaying'],
                 ),
@@ -72,6 +66,13 @@ class Home extends ConsumerWidget {
                 child: ContentList(
                   title: 'Upcoming',
                   contentList: movies['upcoming'],
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: ContentList(
+                  title: 'Top Rated',
+                  contentList: movies['topRated'],
+                  isTopRated: true,
                 ),
               ),
             ],
