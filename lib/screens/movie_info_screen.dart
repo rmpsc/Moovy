@@ -81,7 +81,20 @@ class MovieInfoScreen extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     child: Text(movie.overview,
                         style: TextStyle(color: Colors.white, fontSize: 23.0)),
-                  )))
+                  ))),
+          new SizedBox(
+            height: 100,
+            width: 100,
+            child: IconButton(
+              icon: Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 50,
+              ),
+              tooltip: "Add to movie list",
+              onPressed: () {},
+            ),
+          )
         ]),
       ),
     );
