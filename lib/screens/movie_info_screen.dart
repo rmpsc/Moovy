@@ -42,11 +42,11 @@ class MovieInfoScreen extends StatelessWidget {
                   stepGranularity: 1,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center),
-
+              SizedBox(height: 10),
               //]),
               //Row(children: [
               Text("Release Date",
-                  style: TextStyle(color: Colors.orange, fontSize: 17.0),
+                  style: TextStyle(color: Color(0xffF8A99F), fontSize: 17.0),
                   textAlign: TextAlign.center),
               //]),
               //Row(children: [
@@ -55,8 +55,9 @@ class MovieInfoScreen extends StatelessWidget {
                   textAlign: TextAlign.center),
               //]),
               //Row(children: [
+              SizedBox(height:10),
               Text("Rating",
-                  style: TextStyle(color: Colors.orange, fontSize: 17.0),
+                  style: TextStyle(color: Color(0xffF8A99F), fontSize: 17.0),
                   textAlign: TextAlign.center),
               //]),
               Row(
@@ -64,7 +65,7 @@ class MovieInfoScreen extends StatelessWidget {
                 children: [
                   MaterialButton(
                     onPressed: null,
-                    disabledColor: Colors.yellow,
+                    disabledColor: Color(0xffF8A99F),
                     disabledTextColor: Colors.black,
                     child: Text(movie.voteAverage.toString()),
                     padding: EdgeInsets.all(16),

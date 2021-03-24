@@ -77,15 +77,9 @@ class _LoginState extends State<Login> {
           child: MaterialButton(
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-            onPressed: () async {
-              if (_formKey.currentState.validate()) {
-                dynamic result =
-                    await _auth.signInWithEmailandPassword(email, password);
-
-                if (result == null) {
-                  setState(() => error = 'Invalid email and/or password');
-                }
-              }
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+       builder: (BuildContext context) => Home()));
             },
             child: Text("Login",
                 textAlign: TextAlign.center,

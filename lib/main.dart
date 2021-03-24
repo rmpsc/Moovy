@@ -12,7 +12,7 @@ class Moovy extends StatelessWidget {
     return MaterialApp(
       title: 'Moovy',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
         '/': (context) => Login(),
         '/home': (context) => Home(),

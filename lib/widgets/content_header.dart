@@ -25,7 +25,7 @@ class ContentHeader extends StatelessWidget {
             image: DecorationImage(
               image: NetworkImage(featuredContent[0].fullImageUrl),
               fit: BoxFit.cover,
-              alignment: Alignment.bottomCenter
+              alignment: Alignment.center
             ),
           ),
         ),
@@ -34,7 +34,7 @@ class ContentHeader extends StatelessWidget {
           height: 500.0,
           decoration: BoxDecoration(
               gradient: LinearGradient(
-            colors: [Color(0xff151c26), Colors.transparent],
+            colors: [Colors.black, Colors.transparent],
             begin: Alignment.bottomCenter,
             end: Alignment.center,
           )),
