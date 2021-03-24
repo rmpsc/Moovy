@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-
+import 'package:noname/screens/movieList.dart';
 class MovieInfoScreen extends StatelessWidget {
   final Movie movie;
   MovieInfoScreen({Key key, @required this.movie}) : super(key: key);
@@ -92,7 +92,14 @@ class MovieInfoScreen extends StatelessWidget {
                 size: 50,
               ),
               tooltip: "Add to movie list",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => AddMovie(movie),
+                  )
+                );
+              },
             ),
           )
         ]),

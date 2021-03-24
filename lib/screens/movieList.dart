@@ -2,18 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:noname/screens/home_screen.dart';
 import 'package:noname/models/movie.dart';
-List<String> Names = [
-  'Watch Later','Action Movies','Comedies','Horror', 'Favorite Movies','Shrek Movies'
-];
+import 'package:noname/screens/movie_info_screen.dart';
 List<Movie> movies = [];
 enum SlidableAction{edit, details, delete}
 
-void main() {
-  //Widget testwidget = new MediaQuery(
-  //    data: new MediaQueryData(),
-  //    child: new MaterialApp(home: new SettingsPage()));
-  runApp(NewMovieList());
-}
 class NewMovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,12 +44,14 @@ class _MovieListState extends State<MovieList> {
   );
   void dismissableSlidableItem(
       BuildContext context, int index, SlidableAction action) {
-    setState(() {
-      Names.removeAt(index);
-    });
-
     switch (action) {
+      case SlidableAction.details:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>MovieInfoScreen(movie: movies[index])));
+        break;
       case SlidableAction.delete:
+        setState(() {
+          movies.removeAt(index);
+        });
         break;
     }
   }
@@ -86,19 +80,48 @@ class _MovieListState extends State<MovieList> {
           reverse: false,
           separatorBuilder: (context, index) => Divider(),
           itemBuilder: (context,index){
-            final name = Names[index];
+            final movie = movies[index];
             return SlidableWidget(
-              child: buildListTile(name),
+              child: buildListTile(movie.title),
               onDismissed: (action) => dismissableSlidableItem(context, index, action),
             );
           },
-          itemCount: Names.length,
+          itemCount: movies.length,
         ),
       ),
     );
   }
 }
 
+class AddMovie extends StatelessWidget{
+  Movie movie;
+  AddMovie(Movie movie) {
+    this.movie = movie;
+    movies.add(movie);
+  }
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: Text("Successfully added " + movie.title + " to movieList"),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.network(
+            movie.smallImageUrl,
+            scale: 1.1,
+          ),
+        ],
+      ),
+      actions: [
+        FlatButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text("Close")),
+      ],
+    );
+  }
+}
 
 class SlidableWidget<T> extends StatelessWidget {
   final Widget child;
