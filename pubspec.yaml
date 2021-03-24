@@ -48,6 +48,7 @@ dependencies:
 
   # Firebase
   firebase_auth: ^0.16.1
+  cloud_firestore: ^0.12.9+4
 
 
 
