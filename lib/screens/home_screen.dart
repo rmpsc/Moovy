@@ -52,6 +52,9 @@ class Home extends ConsumerWidget {
                   child: ContentHeader(featuredContent: movies['featured']),
                 ),
                 SliverToBoxAdapter(
+                  child: SizedBox(height: 12.0,),
+                ),
+                SliverToBoxAdapter(
                   child: ContentList(
                     title: 'Popular',
                     contentList: movies['popular'],

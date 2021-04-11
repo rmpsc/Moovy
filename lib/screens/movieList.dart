@@ -3,6 +3,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:noname/screens/home_screen.dart';
 import 'package:noname/models/movie.dart';
 import 'package:noname/screens/movie_info_screen.dart';
+import 'package:noname/widgets/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 List<Movie> movies = [];
 enum SlidableAction{edit, details, delete}
 
@@ -56,37 +58,28 @@ class _MovieListState extends State<MovieList> {
     }
   }
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff151c26),
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0,
-        title: Text("Movie List", style: TextStyle(
-            fontSize: 25
-        ),),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
+    final Size screenSize = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xff151c26),
+        appBar: PreferredSize(
+            preferredSize: Size(screenSize.width, 80.0),
+            child: CustomAppBar(),
           ),
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
-          },//Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));},
-        ),
-      ),
-      body:  new Container(
-        child:
-        new ListView.separated(
-          reverse: false,
-          separatorBuilder: (context, index) => Divider(),
-          itemBuilder: (context,index){
-            final movie = movies[index];
-            return SlidableWidget(
-              child: buildListTile(movie.title),
-              onDismissed: (action) => dismissableSlidableItem(context, index, action),
-            );
-          },
-          itemCount: movies.length,
+        body:  new Container(
+          child:
+          new ListView.separated(
+            reverse: false,
+            separatorBuilder: (context, index) => Divider(),
+            itemBuilder: (context,index){
+              final movie = movies[index];
+              return SlidableWidget(
+                child: buildListTile(movie.title),
+                onDismissed: (action) => dismissableSlidableItem(context, index, action),
+              );
+            },
+            itemCount: movies.length,
+          ),
         ),
       ),
     );
