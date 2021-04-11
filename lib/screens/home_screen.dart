@@ -32,52 +32,54 @@ class Home extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final Size screenSize = MediaQuery.of(context).size;
-    return Scaffold(
-      extendBodyBehindAppBar: false,
-      appBar: PreferredSize(
-        preferredSize: Size(screenSize.width, 80.0),
-        child: CustomAppBar(),
-      ),
-      backgroundColor: primaryColor,
-      body: watch(moviesFutureProvider).when(
-        error: (e, s) {
-          return Text("error");
-        },
-        loading: () => Center(child: CircularProgressIndicator()),
-        data: (movies) {
-          return CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: ContentHeader(featuredContent: movies['featured']),
-              ),
-              SliverToBoxAdapter(
-                child: ContentList(
-                  title: 'Popular',
-                  contentList: movies['popular'],
+    return SafeArea(
+      child: Scaffold(
+        extendBodyBehindAppBar: false,
+        appBar: PreferredSize(
+          preferredSize: Size(screenSize.width, 80.0),
+          child: CustomAppBar(),
+        ),
+        backgroundColor: primaryColor,
+        body: watch(moviesFutureProvider).when(
+          error: (e, s) {
+            return Text("error");
+          },
+          loading: () => Center(child: CircularProgressIndicator()),
+          data: (movies) {
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: ContentHeader(featuredContent: movies['featured']),
                 ),
-              ),
-              SliverToBoxAdapter(
-                child: ContentList(
-                  title: 'Now Playing',
-                  contentList: movies['nowPlaying'],
+                SliverToBoxAdapter(
+                  child: ContentList(
+                    title: 'Popular',
+                    contentList: movies['popular'],
+                  ),
                 ),
-              ),
-              SliverToBoxAdapter(
-                child: ContentList(
-                  title: 'Upcoming',
-                  contentList: movies['upcoming'],
+                SliverToBoxAdapter(
+                  child: ContentList(
+                    title: 'Now Playing',
+                    contentList: movies['nowPlaying'],
+                  ),
                 ),
-              ),
-              SliverToBoxAdapter(
-                child: ContentList(
-                  title: 'Top Rated',
-                  contentList: movies['topRated'],
-                  isTopRated: true,
+                SliverToBoxAdapter(
+                  child: ContentList(
+                    title: 'Upcoming',
+                    contentList: movies['upcoming'],
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
+                SliverToBoxAdapter(
+                  child: ContentList(
+                    title: 'Top Rated',
+                    contentList: movies['topRated'],
+                    isTopRated: true,
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

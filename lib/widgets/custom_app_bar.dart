@@ -15,18 +15,15 @@ class CustomAppBar extends StatelessWidget {
       color: Color(0xff151c26),
       child: Row(
         children: [
-          Image.asset('assets/tr_moovy_logo2.gif'),
+          Image.asset('assets/tr_moovy_logo2.gif', height: 50,),
           const SizedBox(width: 12.0,),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _AppBarButton(title: 'Moovies', onTap: () => print('Moovies'),),
-                FlatButton(textColor: Colors.white,
-                onPressed: (){Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => MovieList()));},
-                child: Text("My List"),
-                shape: CircleBorder(side: BorderSide(color: Colors.transparent))),
+                _AppBarButton(title: 'My List', onTap: () => {Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MovieList()))},),
                 _AppBarButton(title: 'Account', onTap: () => print('Account'),),
                 IconButton(
                   icon: Icon(
