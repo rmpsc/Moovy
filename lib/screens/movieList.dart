@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:noname/screens/home_screen.dart';
 import 'package:noname/models/movie.dart';
 import 'package:noname/screens/movie_info_screen.dart';
+import 'package:noname/theme.dart';
 import 'package:noname/widgets/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 List<Movie> movies = [];
@@ -95,12 +96,13 @@ class AddMovie extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Successfully added " + movie.title + " to movieList"),
+      backgroundColor: primaryColor,
+      title: PrimaryText(text: "Successfully added " + movie.title + " to your list"),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.network(
-            movie.smallImageUrl,
+            movie.fullImageUrl,
             scale: 1.1,
           ),
         ],
@@ -110,7 +112,7 @@ class AddMovie extends StatelessWidget{
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text("Close")),
+            child: SecondaryText(text: "Close")),
       ],
     );
   }

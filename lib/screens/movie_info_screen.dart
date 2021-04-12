@@ -115,12 +115,12 @@ class MovieInfoScreen extends StatelessWidget {
                           textAlign: TextAlign.center),
 
                       MaterialButton(
-                        onPressed: null,
-                        disabledColor: Color(0xffF8A99F),
-                        disabledTextColor: Colors.black,
-                        child: Text(movie.voteAverage.toString()),
-                        padding: EdgeInsets.all(16),
-                        shape: CircleBorder(),
+                          onPressed: null,
+                          disabledColor: Color(0xffF8A99F),
+                          disabledTextColor: Colors.black,
+                          child: Text(movie.voteAverage.toString()),
+                          padding: EdgeInsets.all(16),
+                          shape: CircleBorder(),
                       ),
                     ],
                   ),
