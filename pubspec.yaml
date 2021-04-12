@@ -52,6 +52,9 @@ dependencies:
   # Loading spinkit
   flutter_spinkit: ^4.0.0
 
+  # Unicorndial
+  unicorndial: ^1.1.5
+
 
 
 dev_dependencies:

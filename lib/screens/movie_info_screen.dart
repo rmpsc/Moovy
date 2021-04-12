@@ -4,108 +4,153 @@ import 'package:noname/models/models.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:noname/screens/movieList.dart';
 import 'package:noname/theme.dart';
+import 'package:unicorndial/unicorndial.dart';
+
 class MovieInfoScreen extends StatelessWidget {
   final Movie movie;
   MovieInfoScreen({Key key, @required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var childButtons = List<UnicornButton>();
+
+    childButtons.add(UnicornButton(
+        hasLabel: true,
+        labelText: "Stream",
+        currentButton: FloatingActionButton(
+          heroTag: "stream",
+          backgroundColor: Colors.redAccent,
+          mini: true,
+          child: Icon(Icons.play_arrow),
+          onPressed: () {
+            print("Streaming...");
+          },
+        )));
+
+    childButtons.add(UnicornButton(
+        hasLabel: true,
+        labelText: "Add",
+        currentButton: FloatingActionButton(
+          heroTag: "add",
+          backgroundColor: Colors.greenAccent,
+          mini: true,
+          child: Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddMovie(movie),
+              ),
+            );
+          },
+        )));
     return Scaffold(
       backgroundColor: Color(0xff151c26),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(children: [
-          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            IconButton(
-              icon: Icon(Icons.close),
-              color: Colors.white,
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          ]),
-          Row(children: [
-            Container(
-              child: Image.network(
-                movie.fullImageUrl,
-                height: 280,
-              ),
-            ),
-            Container(
-              child: Expanded(
-                child: Column(children: [
-              //Row(children: [
-
-              AutoSizeText(movie.title,
-                  style: TextStyle(color: Colors.white, fontSize: 30.0),
-                  maxLines: 3,
-                  minFontSize: 10,
-                  stepGranularity: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center),
-              SizedBox(height: 10),
-              //]),
-              //Row(children: [
-              Text("Release Date",
-                  style: TextStyle(color: Color(0xffF8A99F), fontSize: 17.0),
-                  textAlign: TextAlign.center),
-              //]),
-              //Row(children: [
-              Text(movie.releaseDate,
-                  style: TextStyle(color: Colors.white, fontSize: 17.0),
-                  textAlign: TextAlign.center),
-              //]),
-              //Row(children: [
-              SizedBox(height:10),
-              Text("Rating",
-                  style: TextStyle(color: Color(0xffF8A99F), fontSize: 17.0),
-                  textAlign: TextAlign.center),
-              //]),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MaterialButton(
-                    onPressed: null,
-                    disabledColor: Color(0xffF8A99F),
-                    disabledTextColor: Colors.black,
-                    child: Text(movie.voteAverage.toString()),
-                    padding: EdgeInsets.all(16),
-                    shape: CircleBorder(),
-                  )
-                ],
-              )
-            ])))
-          ]),
-          Expanded(
-              child: Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: SecondaryText(text: movie.overview,)
-                  ),
-              ),
-          ),
-          SizedBox(
-            height: 100,
-            width: 100,
-            child: IconButton(
-              icon: Icon(
-                Icons.add,
+        padding: EdgeInsets.fromLTRB(12.0, 24.0, 12.0, 12.0),
+        // Main column
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Exit button row
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              IconButton(
+                icon: Icon(Icons.close),
                 color: Colors.white,
-                size: 50,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
-              tooltip: "Add to movie list",
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                  builder: (context) => AddMovie(movie),
-                  )
-                );
-              },
+            ]),
+
+            // Image row
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  child: Image.network(
+                    movie.fullImageUrl,
+                    height: 280,
+                  ),
+                ),
+
+                SizedBox(
+                  width: 10.0,
+                ),
+
+                // Title column
+                Expanded(
+                  child: Column(
+                    children: [
+                      // Title
+                      AutoSizeText(movie.title,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold),
+                          maxLines: 3,
+                          minFontSize: 10,
+                          stepGranularity: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center),
+
+                      SizedBox(height: 20),
+
+                      // Release Date
+                      Text("Release Date",
+                          style: TextStyle(
+                              color: Color(0xffF8A99F), fontSize: 17.0),
+                          textAlign: TextAlign.center),
+
+                      Text(movie.releaseDate,
+                          style: TextStyle(color: Colors.white, fontSize: 17.0),
+                          textAlign: TextAlign.center),
+
+                      SizedBox(height: 20),
+
+                      // Rating
+                      Text("Rating",
+                          style: TextStyle(
+                              color: Color(0xffF8A99F), fontSize: 17.0),
+                          textAlign: TextAlign.center),
+
+                      MaterialButton(
+                        onPressed: null,
+                        disabledColor: Color(0xffF8A99F),
+                        disabledTextColor: Colors.black,
+                        child: Text(movie.voteAverage.toString()),
+                        padding: EdgeInsets.all(16),
+                        shape: CircleBorder(),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          )
-        ]),
+
+            SizedBox(
+              height: 12.0,
+            ),
+
+            SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: SecondaryText(
+                  text: movie.overview,
+                )),
+
+            SizedBox(
+              height: 12,
+            ),
+          ],
+        ),
+      ),
+
+      floatingActionButton: UnicornDialer(
+          hasBackground: false,
+          parentButtonBackground: Color(0xffF8A99F),
+          orientation: UnicornOrientation.VERTICAL,
+          parentButton: Icon(Icons.more_horiz),
+          childButtons: childButtons,
       ),
     );
   }
