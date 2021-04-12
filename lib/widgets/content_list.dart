@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
 import 'package:noname/screens/movie_info_screen.dart';
+import 'package:noname/theme.dart';
 
 class ContentList extends StatelessWidget {
   final String title;
@@ -23,13 +24,8 @@ class ContentList extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-              ),
+            child: PrimaryText(
+              text: title,
             ),
           ),
           Container(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noname/screens/screens.dart';
 import 'package:noname/screens/settings.dart';
 import 'package:noname/screens/movieList.dart';
+import 'package:noname/theme.dart';
 
 class CustomAppBar extends StatelessWidget {
 
@@ -65,13 +66,8 @@ class _AppBarButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Text(
-        title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-        ),
+      child: SecondaryText(
+        text: title
       ),
     );
   }

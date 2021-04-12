@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:noname/screens/movieList.dart';
+import 'package:noname/theme.dart';
 class MovieInfoScreen extends StatelessWidget {
   final Movie movie;
   MovieInfoScreen({Key key, @required this.movie}) : super(key: key);
@@ -26,13 +27,13 @@ class MovieInfoScreen extends StatelessWidget {
           Row(children: [
             Container(
               child: Image.network(
-                movie.smallImageUrl,
-                scale: 1.1,
+                movie.fullImageUrl,
+                height: 280,
               ),
             ),
             Container(
-                child: Expanded(
-                    child: Column(children: [
+              child: Expanded(
+                child: Column(children: [
               //Row(children: [
 
               AutoSizeText(movie.title,
@@ -80,10 +81,11 @@ class MovieInfoScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 15),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
-                    child: Text(movie.overview,
-                        style: TextStyle(color: Colors.white, fontSize: 23.0)),
-                  ))),
-          new SizedBox(
+                    child: SecondaryText(text: movie.overview,)
+                  ),
+              ),
+          ),
+          SizedBox(
             height: 100,
             width: 100,
             child: IconButton(
