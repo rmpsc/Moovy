@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noname/screens/screens.dart';
 import 'package:noname/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
   //Login({Key key, this.title}) : super(key: key);
@@ -16,6 +17,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  FirebaseUser user;
 
   //text field state
   String email = '';
@@ -24,6 +26,19 @@ class _LoginState extends State<Login> {
 
   //TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   @override
+  void initState() {
+    super.initState();
+    signOutGoogle();
+  }
+
+  void click() {
+    signInWithGoogle().then((user) => {
+          this.user = user,
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Home()))
+        });
+  }
+
   Widget build(BuildContext context) {
     final emailField = TextFormField(
         validator: (val) => val.isEmpty ? "Enter an email" : null,
@@ -78,10 +93,31 @@ class _LoginState extends State<Login> {
             minWidth: MediaQuery.of(context).size.width,
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-       builder: (BuildContext context) => Home()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (BuildContext context) => Home()));
             },
             child: Text("Login",
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ));
+
+    final googleButton = Material(
+        elevation: 10.0,
+        borderRadius: BorderRadius.circular(30.0),
+        color: Colors.black,
+        child: Ink(
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 4.0),
+              borderRadius: BorderRadius.circular(32)),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () async {
+              this.click();
+            },
+            child: Text("Google Sign In",
                 textAlign: TextAlign.center,
                 style: style.copyWith(
                     color: Colors.white, fontWeight: FontWeight.bold)),
@@ -153,7 +189,7 @@ class _LoginState extends State<Login> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Center(
+      body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -181,6 +217,10 @@ class _LoginState extends State<Login> {
                   height: 20.0,
                 ),
                 loginButon,
+                SizedBox(
+                  height: 20.0,
+                ),
+                googleButton,
                 SizedBox(
                   height: 12.0,
                 ),

@@ -115,12 +115,12 @@ class MovieInfoScreen extends StatelessWidget {
                           textAlign: TextAlign.center),
 
                       MaterialButton(
-                          onPressed: null,
-                          disabledColor: Color(0xffF8A99F),
-                          disabledTextColor: Colors.black,
-                          child: Text(movie.voteAverage.toString()),
-                          padding: EdgeInsets.all(16),
-                          shape: CircleBorder(),
+                        onPressed: null,
+                        disabledColor: Color(0xffF8A99F),
+                        disabledTextColor: Colors.black,
+                        child: Text(movie.voteAverage.toString()),
+                        padding: EdgeInsets.all(16),
+                        shape: CircleBorder(),
                       ),
                     ],
                   ),
@@ -144,13 +144,12 @@ class MovieInfoScreen extends StatelessWidget {
           ],
         ),
       ),
-
       floatingActionButton: UnicornDialer(
-          hasBackground: false,
-          parentButtonBackground: Color(0xffF8A99F),
-          orientation: UnicornOrientation.VERTICAL,
-          parentButton: Icon(Icons.more_horiz),
-          childButtons: childButtons,
+        hasBackground: false,
+        parentButtonBackground: Color(0xffF8A99F),
+        orientation: UnicornOrientation.VERTICAL,
+        parentButton: Icon(Icons.more_horiz),
+        childButtons: childButtons,
       ),
     );
   }

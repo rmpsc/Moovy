@@ -6,50 +6,52 @@ import 'package:noname/screens/movie_info_screen.dart';
 import 'package:noname/theme.dart';
 import 'package:noname/widgets/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 List<Movie> movies = [];
-enum SlidableAction{edit, details, delete}
+enum SlidableAction { edit, details, delete }
 
 class NewMovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          fontFamily: 'avenir'
-      ),
+      theme: ThemeData(fontFamily: 'avenir'),
       home: Home(),
     );
   }
 }
+
 class MovieList extends StatefulWidget {
   @override
   _MovieListState createState() => _MovieListState();
 }
 
 class _MovieListState extends State<MovieList> {
-
   Widget buildListTile(String name) => ListTile(
-    contentPadding: EdgeInsets.symmetric(
-      horizontal: 16,
-      vertical: 16,
-    ),
-    title: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 4),
-        Text(name,
-        style: TextStyle(
-          color: Colors.white,)
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
         ),
-      ],
-    ),
-    onTap: () {},
-  );
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 4),
+            Text(name,
+                style: TextStyle(
+                  color: Colors.white,
+                )),
+          ],
+        ),
+        onTap: () {},
+      );
   void dismissableSlidableItem(
       BuildContext context, int index, SlidableAction action) {
     switch (action) {
       case SlidableAction.details:
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>MovieInfoScreen(movie: movies[index])));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => MovieInfoScreen(movie: movies[index])));
         break;
       case SlidableAction.delete:
         setState(() {
@@ -58,25 +60,26 @@ class _MovieListState extends State<MovieList> {
         break;
     }
   }
+
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff151c26),
         appBar: PreferredSize(
-            preferredSize: Size(screenSize.width, 80.0),
-            child: CustomAppBar(),
-          ),
-        body:  new Container(
-          child:
-          new ListView.separated(
+          preferredSize: Size(screenSize.width, 80.0),
+          child: CustomAppBar(),
+        ),
+        body: new Container(
+          child: new ListView.separated(
             reverse: false,
             separatorBuilder: (context, index) => Divider(),
-            itemBuilder: (context,index){
+            itemBuilder: (context, index) {
               final movie = movies[index];
               return SlidableWidget(
                 child: buildListTile(movie.title),
-                onDismissed: (action) => dismissableSlidableItem(context, index, action),
+                onDismissed: (action) =>
+                    dismissableSlidableItem(context, index, action),
               );
             },
             itemCount: movies.length,
@@ -87,7 +90,7 @@ class _MovieListState extends State<MovieList> {
   }
 }
 
-class AddMovie extends StatelessWidget{
+class AddMovie extends StatelessWidget {
   Movie movie;
   AddMovie(Movie movie) {
     this.movie = movie;
@@ -97,7 +100,8 @@ class AddMovie extends StatelessWidget{
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: primaryColor,
-      title: PrimaryText(text: "Successfully added " + movie.title + " to your list"),
+      title: PrimaryText(
+          text: "Successfully added " + movie.title + " to your list"),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -129,28 +133,29 @@ class SlidableWidget<T> extends StatelessWidget {
   }) : super(key: key);
 
   Widget build(BuildContext context) => Slidable(
-    actionPane: SlidableDrawerActionPane(),
-    child: child,
-    /// right side
-    secondaryActions: <Widget>[
-      IconSlideAction(
-        caption: 'Edit',
-        color: Colors.white,
-        icon: Icons.edit,
-        onTap: () => onDismissed(SlidableAction.edit),
-      ),
-      IconSlideAction(
-        caption: 'Details',
-        color: Colors.white,
-        icon: Icons.comment_rounded,
-        onTap: () => onDismissed(SlidableAction.details),
-      ),
-      IconSlideAction(
-        caption: 'Delete',
-        color: Colors.red,
-        icon: Icons.delete,
-        onTap: () => onDismissed(SlidableAction.delete),
-      ),
-    ],
-  );
+        actionPane: SlidableDrawerActionPane(),
+        child: child,
+
+        /// right side
+        secondaryActions: <Widget>[
+          IconSlideAction(
+            caption: 'Edit',
+            color: Colors.white,
+            icon: Icons.edit,
+            onTap: () => onDismissed(SlidableAction.edit),
+          ),
+          IconSlideAction(
+            caption: 'Details',
+            color: Colors.white,
+            icon: Icons.comment_rounded,
+            onTap: () => onDismissed(SlidableAction.details),
+          ),
+          IconSlideAction(
+            caption: 'Delete',
+            color: Colors.red,
+            icon: Icons.delete,
+            onTap: () => onDismissed(SlidableAction.delete),
+          ),
+        ],
+      );
 }

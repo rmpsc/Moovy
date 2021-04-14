@@ -10,14 +10,13 @@ class Moovy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Moovy',
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => Login(),
-        '/home': (context) => Home(),
-        '/account': (context) => Account(),
-      }
-    );
+        title: 'Moovy',
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Login(),
+          '/home': (context) => Home(),
+          '/account': (context) => Account(),
+        });
   }
 }
