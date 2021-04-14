@@ -25,6 +25,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  better_player: ^0.0.48
+
   flutter_slidable:
 
   #Auto sizes text
