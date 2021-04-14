@@ -9,9 +9,8 @@ class _pwreset extends State<pwreset> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text(
-        "PASSWORD RESET PAGE",
-      )
-    );
+        body: Text(
+      "PASSWORD RESET TEST123",
+    ));
   }
 }
