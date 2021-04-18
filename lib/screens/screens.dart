@@ -10,3 +10,4 @@ export 'authenticate/login.dart';
 export 'authenticate/register.dart';
 export 'authenticate/reg.dart';
 export 'movie_info_screen.dart';
+export 'ConfirmEmail.dart';
