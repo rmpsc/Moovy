@@ -13,8 +13,11 @@ import io.flutter.embedding.engine.FlutterEngine;
 @Keep
 public final class GeneratedPluginRegistrant {
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+    flutterEngine.getPlugins().add(new com.jhomlala.better_player.BetterPlayerPlugin());
     flutterEngine.getPlugins().add(new io.flutter.plugins.firebaseauth.FirebaseAuthPlugin());
     flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.core.FirebaseCorePlugin());
     flutterEngine.getPlugins().add(new dev.flutter.plugins.integration_test.IntegrationTestPlugin());
+    flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());
+    flutterEngine.getPlugins().add(new creativemaybeno.wakelock.WakelockPlugin());
   }
 }
