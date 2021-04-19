@@ -25,11 +25,11 @@ class CustomAppBar extends StatelessWidget {
               children: [
                 _AppBarButton(
                   title: 'Moovies',
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (BuildContext context) => Home()))),
                 _AppBarButton(
                   title: 'My List',
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (BuildContext context) => MovieList()))),
                 IconButton(
                   icon: Icon(
