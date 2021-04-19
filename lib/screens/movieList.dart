@@ -56,6 +56,9 @@ class _MovieListState extends State<MovieList> {
           movies.removeAt(index);
         });
         break;
+      case SlidableAction.edit:
+        // TODO: Handle this case.
+        break;
     }
   }
   Widget build(BuildContext context) {

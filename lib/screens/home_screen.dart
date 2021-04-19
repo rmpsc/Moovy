@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/all.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:noname/widgets/widgets.dart';
 import '../services/movie_service.dart';
 import 'package:noname/theme.dart';
@@ -44,7 +45,16 @@ class Home extends ConsumerWidget {
           error: (e, s) {
             return Text("error");
           },
-          loading: () => Center(child: CircularProgressIndicator()),
+          loading: () => 
+            Scaffold(
+              backgroundColor: primaryColor,
+              body: Center(
+                child: SpinKitSquareCircle(
+                  color: secondaryColor,
+                  size: 50.0,
+                ),
+              ),
+            ),
           data: (movies) {
             return CustomScrollView(
               slivers: [
