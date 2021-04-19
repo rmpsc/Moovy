@@ -13,3 +13,4 @@ export 'account/user_list.dart';
 export 'account/userAccount.dart';
 export 'account/userData_tile.dart';
 export 'movie_info_screen.dart';
+export 'ConfirmEmail.dart';

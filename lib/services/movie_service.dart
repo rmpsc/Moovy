@@ -67,6 +67,6 @@ class MovieService {
         .map((movieData) => Movie.fromMap(movieData))
         .toList(growable: false);
 
-    return topRatedMovies;
+    return topRatedMovies.reversed.toList();
   }
 }

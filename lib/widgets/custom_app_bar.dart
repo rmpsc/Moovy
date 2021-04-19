@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:noname/screens/screens.dart';
 import 'package:noname/screens/settings.dart';
 import 'package:noname/screens/movieList.dart';
+import 'package:noname/theme.dart';
 
 class CustomAppBar extends StatelessWidget {
 
@@ -9,25 +11,26 @@ class CustomAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 12.0,
-        horizontal: 20.0,
+        horizontal: 12.0,
       ),
       //color: Color(0xff151c26),
       color: Color(0xff151c26),
       child: Row(
         children: [
-          Image.asset('assets/tr_moovy_logo2.gif'),
+          Image.asset('assets/tr_moovy_logo2.gif', height: 50,),
           const SizedBox(width: 12.0,),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _AppBarButton(title: 'Moovies', onTap: () => print('Moovies'),),
-                FlatButton(textColor: Colors.white,
-                onPressed: (){Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => MovieList()));},
-                child: Text("My List"),
-                shape: CircleBorder(side: BorderSide(color: Colors.transparent))),
-                _AppBarButton(title: 'Account', onTap: () => print('Account'),),
+                _AppBarButton(
+                  title: 'Moovies',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => Home()))),
+                _AppBarButton(
+                  title: 'My List',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MovieList()))),
                 IconButton(
                   icon: Icon(
                     Icons.settings,
@@ -62,14 +65,9 @@ class _AppBarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap,
-      child: Text(
-        title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-        ),
+      onTap: onTap,
+      child: SecondaryText(
+        text: title
       ),
     );
   }

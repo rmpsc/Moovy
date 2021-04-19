@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:noname/screens/home_screen.dart';
 import 'package:noname/models/movie.dart';
-List<String> Names = [
-  'Watch Later','Action Movies','Comedies','Horror', 'Favorite Movies','Shrek Movies'
-];
+import 'package:noname/screens/movie_info_screen.dart';
+import 'package:noname/theme.dart';
+import 'package:noname/widgets/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 List<Movie> movies = [];
 enum SlidableAction{edit, details, delete}
 
-void main() {
-  //Widget testwidget = new MediaQuery(
-  //    data: new MediaQueryData(),
-  //    child: new MaterialApp(home: new SettingsPage()));
-  runApp(NewMovieList());
-}
 class NewMovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -52,53 +47,79 @@ class _MovieListState extends State<MovieList> {
   );
   void dismissableSlidableItem(
       BuildContext context, int index, SlidableAction action) {
-    setState(() {
-      Names.removeAt(index);
-    });
-
     switch (action) {
+      case SlidableAction.details:
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>MovieInfoScreen(movie: movies[index])));
+        break;
       case SlidableAction.delete:
+        setState(() {
+          movies.removeAt(index);
+        });
+        break;
+      case SlidableAction.edit:
+        // TODO: Handle this case.
         break;
     }
   }
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff151c26),
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0,
-        title: Text("Movie List", style: TextStyle(
-            fontSize: 25
-        ),),
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
+    final Size screenSize = MediaQuery.of(context).size;
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xff151c26),
+        appBar: PreferredSize(
+            preferredSize: Size(screenSize.width, 80.0),
+            child: CustomAppBar(),
           ),
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
-          },//Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));},
-        ),
-      ),
-      body:  new Container(
-        child:
-        new ListView.separated(
-          reverse: false,
-          separatorBuilder: (context, index) => Divider(),
-          itemBuilder: (context,index){
-            final name = Names[index];
-            return SlidableWidget(
-              child: buildListTile(name),
-              onDismissed: (action) => dismissableSlidableItem(context, index, action),
-            );
-          },
-          itemCount: Names.length,
+        body:  new Container(
+          child:
+          new ListView.separated(
+            reverse: false,
+            separatorBuilder: (context, index) => Divider(),
+            itemBuilder: (context,index){
+              final movie = movies[index];
+              return SlidableWidget(
+                child: buildListTile(movie.title),
+                onDismissed: (action) => dismissableSlidableItem(context, index, action),
+              );
+            },
+            itemCount: movies.length,
+          ),
         ),
       ),
     );
   }
 }
 
+class AddMovie extends StatelessWidget{
+  Movie movie;
+  AddMovie(Movie movie) {
+    this.movie = movie;
+    movies.add(movie);
+  }
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: primaryColor,
+      title: PrimaryText(text: "Successfully added " + movie.title + " to your list"),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.network(
+            movie.fullImageUrl,
+            scale: 1.1,
+          ),
+        ],
+      ),
+      actions: [
+        FlatButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: SecondaryText(text: "Close")),
+      ],
+    );
+  }
+}
 
 class SlidableWidget<T> extends StatelessWidget {
   final Widget child;

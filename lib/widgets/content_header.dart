@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
+import 'package:noname/screens/movieList.dart';
 import 'package:noname/screens/screens.dart';
 import 'package:noname/services/services.dart';
 import 'package:noname/widgets/vertical_icon_button.dart';
@@ -25,7 +26,7 @@ class ContentHeader extends StatelessWidget {
             image: DecorationImage(
               image: NetworkImage(featuredContent[0].fullImageUrl),
               fit: BoxFit.cover,
-              alignment: Alignment.bottomCenter
+              alignment: Alignment.center
             ),
           ),
         ),
@@ -34,7 +35,7 @@ class ContentHeader extends StatelessWidget {
           height: 500.0,
           decoration: BoxDecoration(
               gradient: LinearGradient(
-            colors: [Color(0xff151c26), Colors.transparent],
+            colors: [Colors.black, Colors.transparent],
             begin: Alignment.bottomCenter,
             end: Alignment.center,
           )),
@@ -62,14 +63,29 @@ class ContentHeader extends StatelessWidget {
               VerticalIconButton(
                 icon: Icons.add,
                 title: 'List',
-                onTap: () => print('My List'),
+                onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => AddMovie(featuredContent[0]),
+                  )
+                );
+              },
               ),
               SizedBox(width: 200.0),
               //_PlayButton(),
               VerticalIconButton(
                 icon: Icons.info_outline,
                 title: 'Info',
-                onTap: () => print('Info'),
+                onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            MovieInfoScreen(movie: featuredContent[0]),
+                      ),
+                    );
+                  },
               ),
             ],
           ),
