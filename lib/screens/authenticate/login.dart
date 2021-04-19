@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:noname/screens/screens.dart';
+import 'package:noname/screens/authenticate/authenticate.dart';
+import 'package:noname/screens/authenticate/reg.dart';
+import 'package:noname/screens/authenticate/register.dart';
+import 'package:noname/screens/home.dart';
+import 'package:noname/screens/home_screen.dart';
+import 'package:noname/screens/pwreset.dart';
+import 'package:noname/screens/account/userAccount.dart';
 import 'package:noname/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
+  
   //Login({Key key, this.title}) : super(key: key);
   //final String title;
 
   final Function toggleView;
   Login({this.toggleView});
 
+
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   FirebaseUser user;
@@ -24,7 +33,8 @@ class _LoginState extends State<Login> {
   String password = '';
   String error = '';
 
-  //TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+
+  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   @override
   void initState() {
     super.initState();
@@ -41,8 +51,8 @@ class _LoginState extends State<Login> {
 
   Widget build(BuildContext context) {
     final emailField = TextFormField(
-        validator: (val) => val.isEmpty ? "Enter an email" : null,
-        onChanged: (val) {
+        validator: (val) => val.isEmpty  ? "Enter an email" : null,
+        onChanged: (val){
           setState(() => email = val);
         },
         obscureText: false,
@@ -61,11 +71,10 @@ class _LoginState extends State<Login> {
             fillColor: Color(0xffF8A99F),
             filled: true));
     final passwordField = TextFormField(
-      validator: (val) =>
-          val.length < 6 ? "Enter a password longer than 6 character" : null,
-      onChanged: (val) {
-        setState(() => password = val);
-      },
+      validator: (val) => val.length < 6 ? "Enter a password longer than 6 character" : null,
+      onChanged: (val){
+          setState(() => password = val);
+        },
       obscureText: true,
       style: new TextStyle(fontSize: 22.0, color: Colors.black),
       decoration: InputDecoration(
@@ -129,63 +138,74 @@ class _LoginState extends State<Login> {
       width: 128,
       color: Colors.black,
       child: InkWell(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => pwreset()));
-          },
-          child: Text(
-            "Forgot Password?",
-            style: TextStyle(
-                fontFamily: 'Montserrat',
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                decoration: TextDecoration.underline),
-          )),
+        onTap: (){
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => pwreset()));
+        },
+        child: Text("Forgot Password?",
+        style: TextStyle(
+          fontFamily: 'Montserrat',
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          decoration: TextDecoration.underline
+        ),)
+      ),
     );
 
     final reg = Container(
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        height: 40,
-        width: 300,
-        color: Colors.black,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Center(
-                child: Text("New to Moovy?",
-                    style: TextStyle(
-                        fontFamily: 'Montserrat', color: Colors.white))),
-            SizedBox(width: 5),
-            Center(
-              child: InkWell(
-                  onTap: () {
-                    //Navigator.push(
-                    //context, MaterialPageRoute(builder: (context) => Reg()));
-                    widget.toggleView();
-                  },
-                  child: Text(
-                    "Create an Account!",
-                    style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        color: Color(0xffF8A99F),
-                        fontWeight: FontWeight.bold),
-                  )),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      height: 40,
+      width: 300,
+      color: Colors.black,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: Text("New to Moovy?",
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+                color: Colors.white
+              )
             )
-          ],
-        ));
+          ),
+          SizedBox(
+            width:5
+          ),
+          Center(
+            child: InkWell(
+              onTap: (){
+                //Navigator.push(
+                //context, MaterialPageRoute(builder: (context) => Reg()));
+                widget.toggleView();
+              },
+                child: Text("Create an Account!",
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    color: Color(0xffF8A99F),
+                    fontWeight: FontWeight.bold
+                  ),
+                )
+            ),
+          )
+        ],
+      )
+
+    );
 
     final userInput = Container(
       child: Form(
-          key: _formKey,
-          child: Column(children: <Widget>[
+        key: _formKey,
+        child: Column(
+          children: <Widget>[
             emailField,
             SizedBox(height: 10.0),
             passwordField,
-            SizedBox(
-              height: 10.0,
-            ),
-          ])),
+            SizedBox(height: 10.0,),
+          ]
+        )
+      ),
     );
+
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -210,7 +230,7 @@ class _LoginState extends State<Login> {
                     fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(height: 40.0),
+                 SizedBox(height: 40.0),
                 userInput,
                 fgtpw,
                 SizedBox(
@@ -224,13 +244,15 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 12.0,
                 ),
-                Text(error,
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontFamily: 'Montserrat',
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    )),
+                Text(
+                  error,
+                  style: TextStyle( 
+                    color: Colors.red,
+                    fontFamily: 'Montserrat',
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  )
+                ),
                 SizedBox(
                   height: 40.0,
                 ),
@@ -244,4 +266,4 @@ class _LoginState extends State<Login> {
   }
 }
 
-//TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);

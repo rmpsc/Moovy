@@ -51,6 +51,7 @@ dependencies:
   # Firebase
   firebase_auth: ^0.16.1
   firebase_core: ^0.4.4
+  cloud_firestore: ^0.12.9+4
 
   # Loading spinkit
   flutter_spinkit: ^4.0.0

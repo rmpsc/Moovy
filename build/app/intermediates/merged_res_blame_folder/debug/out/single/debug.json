@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi_splash.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\drawable-mdpi\\splash.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\drawable_moovy_logo.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\drawable\\moovy_logo.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_launch_background.xml.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\drawable-v21\\launch_background.xml"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi_splash.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\drawable-hdpi\\splash.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi_splash.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\drawable-xhdpi\\splash.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_splash.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\drawable-xxxhdpi\\splash.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_tr_moovy_logo.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\drawable-v21\\tr_moovy_logo.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_splash.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\drawable-xxhdpi\\splash.png"
+    },
+    {
+        "merged": "D:\\MoovyProject\\Moovy\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\MoovyProject\\Moovy\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    }
+]
