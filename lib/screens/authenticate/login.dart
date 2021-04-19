@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:noname/screens/authenticate/authenticate.dart';
 import 'package:noname/screens/authenticate/reg.dart';
 import 'package:noname/screens/authenticate/register.dart';
 import 'package:noname/screens/home.dart';
+import 'package:noname/screens/home_screen.dart';
 import 'package:noname/screens/pwreset.dart';
 import 'package:noname/screens/account/userAccount.dart';
 import 'package:noname/services/auth.dart';
@@ -24,12 +26,8 @@ class _LoginState extends State<Login> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-<<<<<<< HEAD
-  
-=======
   FirebaseUser user;
 
->>>>>>> ac4eb03db7352adfafb097ef6c67c2244e26e05e
   //text field state
   String email = '';
   String password = '';
@@ -93,41 +91,6 @@ class _LoginState extends State<Login> {
       ),
     );
     final loginButon = Material(
-<<<<<<< HEAD
-      elevation: 10.0,
-      borderRadius: BorderRadius.circular(30.0),
-      color: Colors.black,
-      child: Ink(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 4.0),
-          borderRadius: BorderRadius.circular(32)
-        ),
-        child:MaterialButton(
-        minWidth: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-        onPressed: () async {
-          if(_formKey.currentState.validate()){
-              dynamic result = await _auth.signInWithEmailandPassword(email, password);
-
-              if (result == null){
-                setState(() => error = 'Invalid email and/or password');
-              }
-              // Navigator.pushReplacement(context,MaterialPageRoute(
-              //   builder: (context)=>Home()
-              // ));
-          }
-        },
-        child: Text("Login",
-            textAlign: TextAlign.center,
-            style: style.copyWith(
-                color: Colors.white, fontWeight: FontWeight.bold)),
-                
-      ),
-    )
-    );
-
-    
-=======
         elevation: 10.0,
         borderRadius: BorderRadius.circular(30.0),
         color: Colors.black,
@@ -170,7 +133,6 @@ class _LoginState extends State<Login> {
           ),
         ));
 
->>>>>>> ac4eb03db7352adfafb097ef6c67c2244e26e05e
     final fgtpw = Container(
       height: 20,
       width: 128,

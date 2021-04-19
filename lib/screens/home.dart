@@ -3,18 +3,17 @@ import 'package:noname/models/user.dart';
 import 'package:noname/screens/account/account.dart';
 import 'package:noname/screens/authenticate/login.dart';
 import 'package:noname/screens/account/userAccount.dart';
-import 'package:noname/screens/screens.dart';
 import 'package:noname/services/auth.dart';
 import 'package:provider/provider.dart';
 
-class Home2 extends StatefulWidget {
+class Home1 extends StatefulWidget {
   
 
   @override
-  _HomeState createState() => _HomeState();
+  _Home1State createState() => _Home1State();
 }
 
-class _HomeState extends State<Home2> {
+class _Home1State extends State<Home1> {
 
   final AuthService _auth = AuthService();
 
@@ -33,8 +32,8 @@ class _HomeState extends State<Home2> {
       child: InkWell(
         onTap: (){
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Account(user: user,)));
-
+              //context, MaterialPageRoute(builder: (context) => userAccount(user: user)));
+              context, MaterialPageRoute(builder: (context) => userAccount()));
         },
         child: Text("User Profile",
         style: TextStyle(

@@ -52,6 +52,10 @@ class DatabaseService {
     .map(_userDataFromSnapShot);
   }
 
+    Future deleteuser() {
+    return userCollection.document(uid).delete();
+  }
+
   // Stream<QuerySnapshot> get users{
   //   return userCollection.snapshots();    
   // }
