@@ -4,6 +4,7 @@ import 'package:noname/screens/movieList.dart';
 import 'package:noname/screens/screens.dart';
 import 'package:noname/services/services.dart';
 import 'package:noname/widgets/vertical_icon_button.dart';
+import 'package:route_transitions/route_transitions.dart';
 
 class ContentHeader extends StatelessWidget {
   // makes new Content object from content_model.dart
@@ -66,8 +67,9 @@ class ContentHeader extends StatelessWidget {
                 onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                  builder: (context) => AddMovie(featuredContent[0]),
+                  PageRouteTransition(
+                    animationType: AnimationType.scale,
+                    builder: (context) => AddMovie(featuredContent[0]),
                   )
                 );
               },

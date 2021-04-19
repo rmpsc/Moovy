@@ -4,6 +4,7 @@ import 'package:noname/models/models.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:noname/screens/movieList.dart';
 import 'package:noname/theme.dart';
+import 'package:route_transitions/route_transitions.dart';
 import 'package:unicorndial/unicorndial.dart';
 
 class MovieInfoScreen extends StatelessWidget {
@@ -38,7 +39,8 @@ class MovieInfoScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
+              PageRouteTransition(
+                animationType: AnimationType.scale,
                 builder: (context) => AddMovie(movie),
               ),
             );

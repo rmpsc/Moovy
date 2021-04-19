@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noname/screens/screens.dart';
 import 'package:noname/screens/settings.dart';
 import 'package:noname/screens/movieList.dart';
 import 'package:noname/theme.dart';
+import 'package:route_transitions/route_transitions.dart';
 
 class CustomAppBar extends StatelessWidget {
 
@@ -25,11 +27,13 @@ class CustomAppBar extends StatelessWidget {
               children: [
                 _AppBarButton(
                   title: 'Moovies',
-                  onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  onTap: () => Navigator.of(context).pushReplacement(PageRouteTransition(
+                    animationType: AnimationType.fade,
                     builder: (BuildContext context) => Home()))),
                 _AppBarButton(
                   title: 'My List',
-                  onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  onTap: () => Navigator.of(context).pushReplacement(PageRouteTransition(
+                    animationType: AnimationType.fade,
                     builder: (BuildContext context) => MovieList()))),
                 IconButton(
                   icon: Icon(
@@ -37,7 +41,7 @@ class CustomAppBar extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
+                    Navigator.of(context).push(CupertinoPageRoute(
                         builder: (BuildContext context) => SettingsPage()));
                   },
                 ),
