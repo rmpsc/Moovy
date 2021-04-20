@@ -70,9 +70,13 @@ class MovieInfoScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  child: Image.network(
-                    movie.fullImageUrl,
-                    height: 280,
+                  // Hero widget for movie img animation
+                  child: Hero(
+                    tag: 'movie-img-${movie.fullImageUrl}',
+                    child: Image.network(
+                      movie.fullImageUrl,
+                      height: 280,
+                    ),
                   ),
                 ),
 
