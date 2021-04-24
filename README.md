@@ -5,7 +5,7 @@
 
 ### A mooviegoer's favorite app
 
-Developed by No Name  
+`Developed by No Name  `  
 `Romel Pascua | Jarred Dee | Jimmy Tran | Danny Nguyen | Daniel Nguyen`
 
 ## Current Version
