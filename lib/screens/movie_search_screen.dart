@@ -1,12 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:noname/screens/movieList.dart';
 import 'package:noname/theme.dart';
-import 'package:unicorndial/unicorndial.dart';
 import 'package:dio/dio.dart';
-import 'package:noname/screens/movie_info_screen.dart';
+import 'package:noname/screens/screens.dart';
 
 class MovieSearchScreen extends StatelessWidget {
   MovieSearchScreen({Key key}) : super(key: key);

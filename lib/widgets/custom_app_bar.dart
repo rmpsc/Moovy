@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noname/screens/screens.dart';
-import 'package:noname/screens/settings.dart';
-import 'package:noname/screens/movieList.dart';
-import 'package:noname/screens/movie_search_screen.dart';
 import 'package:noname/theme.dart';
 import 'package:route_transitions/route_transitions.dart';
 

@@ -2,11 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:noname/screens/movieList.dart';
+import 'package:noname/screens/screens.dart';
 import 'package:noname/theme.dart';
 import 'package:route_transitions/route_transitions.dart';
 import 'package:unicorndial/unicorndial.dart';
-import 'package:noname/screens/rate_movie_screen.dart';
 
 class MovieInfoScreen extends StatelessWidget {
   final Movie movie;

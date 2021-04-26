@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noname/models/user.dart';
-import 'package:noname/screens/account/account.dart';
-import 'package:noname/screens/authenticate/login.dart';
-import 'package:noname/screens/account/userAccount.dart';
+import 'package:noname/screens/screens.dart';
 import 'package:noname/services/auth.dart';
 import 'package:provider/provider.dart';
 
