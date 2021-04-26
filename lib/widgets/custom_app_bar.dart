@@ -44,23 +44,23 @@ class CustomAppBar extends StatelessWidget {
                             builder: (BuildContext context) => MovieList()))),
                 IconButton(
                   icon: Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(CupertinoPageRoute(
+                      builder: (BuildContext context) => MovieSearchScreen(),
+                    ));
+                  },
+                ),
+                IconButton(
+                  icon: Icon(
                     Icons.settings,
                     color: Colors.white,
                   ),
                   onPressed: () {
                     Navigator.of(context).push(CupertinoPageRoute(
                         builder: (BuildContext context) => SettingsPage()));
-                  },
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => MovieSearchScreen(),
-                    ));
                   },
                 ),
               ],

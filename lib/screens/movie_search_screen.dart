@@ -14,7 +14,7 @@ class MovieSearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff151c26),
+      backgroundColor: primaryColor,
       body: Padding(
           padding: EdgeInsets.fromLTRB(12.0, 24.0, 12.0, 12.0),
           // Main column
@@ -75,9 +75,12 @@ class _ExamplePageState extends State<ExamplePage> {
     return new AppBar(
       centerTitle: true,
       title: _appBarTitle,
+      backgroundColor: primaryColor,
+      shadowColor: Colors.black,
       leading: new IconButton(
         icon: _searchIcon,
         onPressed: _searchPressed,
+        color: secondaryColor,
       ),
     );
   }
