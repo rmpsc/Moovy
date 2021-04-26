@@ -21,13 +21,16 @@ class ContentHeader extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          height: 500.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(featuredContent[0].fullImageUrl),
-              fit: BoxFit.cover,
-              alignment: Alignment.center
+        Hero(
+          tag: 'movie-img-${featuredContent[0].fullImageUrl}',
+          child: Container(
+            height: 500.0,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(featuredContent[0].fullImageUrl),
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter
+              ),
             ),
           ),
         ),
