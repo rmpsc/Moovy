@@ -6,6 +6,7 @@ import 'package:noname/screens/movieList.dart';
 import 'package:noname/theme.dart';
 import 'package:route_transitions/route_transitions.dart';
 import 'package:unicorndial/unicorndial.dart';
+import 'package:noname/screens/rate_movie_screen.dart';
 
 class MovieInfoScreen extends StatelessWidget {
   final Movie movie;
@@ -27,7 +28,23 @@ class MovieInfoScreen extends StatelessWidget {
             print("Streaming...");
           },
         )));
-
+    childButtons.add(UnicornButton(
+        hasLabel: true,
+        labelText: "Rate",
+        currentButton: FloatingActionButton(
+          heroTag: "rate",
+          backgroundColor: Colors.yellow,
+          mini: true,
+          child: Icon(Icons.star),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => RateMovie(movie),
+              ),
+            );
+          },
+        )));
     childButtons.add(UnicornButton(
         hasLabel: true,
         labelText: "Add",
@@ -121,12 +138,12 @@ class MovieInfoScreen extends StatelessWidget {
                           textAlign: TextAlign.center),
 
                       MaterialButton(
-                          onPressed: null,
-                          disabledColor: Color(0xffF8A99F),
-                          disabledTextColor: Colors.black,
-                          child: Text(movie.voteAverage.toString()),
-                          padding: EdgeInsets.all(16),
-                          shape: CircleBorder(),
+                        onPressed: null,
+                        disabledColor: Color(0xffF8A99F),
+                        disabledTextColor: Colors.black,
+                        child: Text(movie.voteAverage.toString()),
+                        padding: EdgeInsets.all(16),
+                        shape: CircleBorder(),
                       ),
                     ],
                   ),
@@ -150,13 +167,12 @@ class MovieInfoScreen extends StatelessWidget {
           ],
         ),
       ),
-
       floatingActionButton: UnicornDialer(
-          hasBackground: false,
-          parentButtonBackground: Color(0xffF8A99F),
-          orientation: UnicornOrientation.VERTICAL,
-          parentButton: Icon(Icons.more_horiz),
-          childButtons: childButtons,
+        hasBackground: false,
+        parentButtonBackground: Color(0xffF8A99F),
+        orientation: UnicornOrientation.VERTICAL,
+        parentButton: Icon(Icons.more_horiz),
+        childButtons: childButtons,
       ),
     );
   }
