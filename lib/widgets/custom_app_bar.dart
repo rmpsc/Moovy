@@ -30,15 +30,21 @@ class CustomAppBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _AppBarButton(
-                    title: 'Moovies',
-                    onTap: () => Navigator.of(context).pushReplacement(
+                IconButton(
+                    icon: Icon(
+                      Icons.movie,
+                      color: Colors.white,
+                    ),
+                    onPressed: () => Navigator.of(context).pushReplacement(
                         PageRouteTransition(
                             animationType: AnimationType.fade,
                             builder: (BuildContext context) => Home()))),
-                _AppBarButton(
-                    title: 'My List',
-                    onTap: () => Navigator.of(context).pushReplacement(
+                IconButton(
+                    icon: Icon(
+                      Icons.list,
+                      color: Colors.white,
+                    ),
+                    onPressed: () => Navigator.of(context).pushReplacement(
                         PageRouteTransition(
                             animationType: AnimationType.fade,
                             builder: (BuildContext context) => MovieList()))),
