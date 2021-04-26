@@ -5,7 +5,7 @@
 **`Romel Pascua | Jarred Dee | Jimmy Tran | Danny Nguyen | Daniel Nguyen`**
 
 ## Current Version
-![Alt Text](https://media.giphy.com/media/8yJT9iDg4DeSZnpp83/giphy.gif)
+![](https://media.giphy.com/media/7bBfO7UazurNafsB0Y/giphy.gif)
 
 ### Instructions
 - Run `flutter pub get`
