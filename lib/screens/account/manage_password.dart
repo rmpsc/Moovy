@@ -24,10 +24,9 @@ class _ManagePasswordState extends State<ManagePassword> {
         onChanged: (val) {
           setState(() => currentpw = val);
         },
+        validator: (val) => checkCurrentPasswordValid == false ? "Incorrect password" : null,
         obscureText: true,
         decoration: InputDecoration(
-          errorText: checkCurrentPasswordValid
-            ? null : "Incorrect Password",
             fillColor: Colors.white,
             filled: true,
             contentPadding: EdgeInsets.all(12.0),
@@ -42,6 +41,7 @@ class _ManagePasswordState extends State<ManagePassword> {
         onChanged: (val) {
           setState(() => newpw = val);
         },
+        validator: (val) => val.length < 6? "Password must be at least six characters long": null,
         obscureText: true,
         decoration: InputDecoration(
             fillColor: Colors.white,
@@ -89,8 +89,10 @@ class _ManagePasswordState extends State<ManagePassword> {
 
         print(checkCurrentPasswordValid);
 
-        if (_formKey.currentState.validate()) {
-          
+        
+
+        if (_formKey.currentState.validate() && checkCurrentPasswordValid) {
+          _auth.updateUserPassword(newpw);
           Navigator.pop(context);
         }
       },

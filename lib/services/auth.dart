@@ -1,11 +1,15 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:noname/models/user.dart';
+import 'package:noname/screens/authenticate/authenticate.dart';
+import 'package:noname/screens/wrapper.dart';
 import 'package:noname/services/database.dart';
 
 class AuthService{
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  String err = "PlatformException(ERROR_EMAIL_ALREADY_IN_USE, The email address is already in use by another account., null, null)";
+  String err1 = "PlatformException(ERROR_EMAIL_ALREADY_IN_USE, The email address is already in use by another account., null, null)";
+  String err2 = "PlatformException(ERROR_INVALID_EMAIL, The email address is badly formatted., null, null)";
   
   //create user object based on Firebaseuser
   User _userFromFirebaseUser(FirebaseUser user){
@@ -66,8 +70,8 @@ class AuthService{
     } 
     catch(e){
       print(e.toString());
-      if (e.toString() == err ){
-        return err;
+      if (e.toString() == err1 ){
+        return err1;
       }
       else{
         
@@ -90,17 +94,14 @@ class AuthService{
 
   
   //delete user
-  Future deleteUser(String email, String password) async {
+  Future deleteUser() async {
     try {
       FirebaseUser user = await _auth.currentUser();
-      AuthCredential credentials =
-          EmailAuthProvider.getCredential(email: email, password: password);
       print(user);
-      //AuthResult result = await user.reauthenticateWithCredential(credentials);
       print(user.uid);
       await DatabaseService(uid: user.uid).deleteuser(); // called from database class
       await user.delete();
-      return true;
+      
     } catch (e) {
       print(e.toString());
       return null;
@@ -110,11 +111,11 @@ class AuthService{
   Future<bool> validatePassword(String password) async {
     FirebaseUser firebaseUser = await _auth.currentUser();
     
-    
+    String pw = password;
     print(password);
     AuthCredential credentials = EmailAuthProvider.getCredential(
       email: firebaseUser.email,
-      password: password
+      password: pw
     );
     print(firebaseUser.email);
     print(password);
@@ -127,6 +128,57 @@ class AuthService{
       print(e);
       return false;
     }
+  }
+
+  Future<bool> validateEmailAndPassword(String email, String password) async{
+    FirebaseUser firebaseUser = await _auth.currentUser();
+    String em = email;
+    String pw = password;
+    AuthCredential credentials = EmailAuthProvider.getCredential(
+      email: em,
+      password: pw
+    );
+    print("fbuser");
+    print(firebaseUser);
+    print(em);
+    print(pw);
+
+    
+
+    try{
+      
+      var authResult = await firebaseUser.reauthenticateWithCredential(credentials);
+      print("authResult");
+      //print(authResult);
+      return true;
+    } catch (e) {
+      print(e);
+      print("ERR");
+      return false;
+    }
+  }
+
+  Future<void> updateUserPassword(String password) async {
+    FirebaseUser firebaseUser = await _auth.currentUser();
+    firebaseUser.updatePassword(password);
+
+  }
+
+  Future<bool> updateUserEmail(String email) async{
+
+      if(email.contains('@') && email.contains('.')){
+        FirebaseUser firebaseUser = await _auth.currentUser();
+        print(firebaseUser.updateEmail(email));
+        return true;
+      }
+      else
+      {
+        print("bad email");
+        return false;
+      }
+      
+
+    
   }
   //use this function to delete user in clickable event
   // onTap: () async {  
