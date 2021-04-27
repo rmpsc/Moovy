@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
 import 'package:noname/screens/movie_info_screen.dart';
 import 'package:noname/theme.dart';
+import 'package:route_transitions/route_transitions.dart';
 
 class ContentList extends StatelessWidget {
   final String title;
@@ -29,7 +30,7 @@ class ContentList extends StatelessWidget {
             ),
           ),
           Container(
-            height: isTopRated ? 500.0 : 220.0,
+            height: isTopRated ? 320.0 : 220.0,
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(
                 vertical: 12.0,
@@ -43,20 +44,25 @@ class ContentList extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      PageRouteTransition(
+                        animationType: AnimationType.fade,
                         builder: (context) =>
                             MovieInfoScreen(movie: contentList[index]),
                       ),
                     );
                   },
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    height: isTopRated ? 400.0 : 200.0,
-                    width: isTopRated ? 200.0 : 130.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(content.fullImageUrl),
-                        fit: BoxFit.cover,
+                  // Hero widget for movie img animation
+                  child: Hero(
+                    tag: 'movie-img-${content.fullImageUrl}',
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      height: isTopRated ? 400.0 : 200.0,
+                      width: isTopRated ? 200.0 : 130.0,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(content.fullImageUrl),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
