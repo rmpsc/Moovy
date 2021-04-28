@@ -51,11 +51,11 @@ class ContentList extends StatelessWidget {
                       ),
                     );
                   },
+                  child: Stack(children: [
                   // Hero widget for movie img animation
-                  child: Hero(
+                   Hero(
                     tag: 'movie-img-${content.fullImageUrl}',
                     child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
                       height: isTopRated ? 400.0 : 200.0,
                       width: isTopRated ? 200.0 : 130.0,
                       decoration: BoxDecoration(
@@ -66,6 +66,18 @@ class ContentList extends StatelessWidget {
                       ),
                     ),
                   ),
+                    Positioned(top:0,child:(MaterialButton(  
+                        minWidth: 2.0,
+                        height: 5.0,
+                        onPressed: null,
+                        disabledColor: Color(0xffF8A99F),
+                        disabledTextColor: Colors.black,
+                        child: Text(content.voteAverage.toString()),
+                        padding: EdgeInsets.all(10),
+                        shape: CircleBorder(),
+                      )))                      ,
+                  ],)
+                  
                 );
               },
             ),
