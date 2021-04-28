@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:noname/screens/authenticate/authenticate.dart';
-import 'package:noname/screens/authenticate/reg.dart';
-import 'package:noname/screens/authenticate/register.dart';
-import 'package:noname/screens/home.dart';
-import 'package:noname/screens/home_screen.dart';
-import 'package:noname/screens/pwreset.dart';
-import 'package:noname/screens/account/userAccount.dart';
+import 'package:noname/screens/screens.dart';
 import 'package:noname/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 
 class Login extends StatefulWidget {
-  
   //Login({Key key, this.title}) : super(key: key);
   //final String title;
 
   final Function toggleView;
   Login({this.toggleView});
 
-
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   FirebaseUser user;
+  String message;
 
   //text field state
   String email = '';
   String password = '';
   String error = '';
-
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   @override
@@ -40,6 +32,29 @@ class _LoginState extends State<Login> {
     super.initState();
     signOutGoogle();
   }
+
+  void _twitterlogin() async {
+    final TwitterLogin twitterLogin = new TwitterLogin(
+      consumerKey: 'YAQHFB7vQTdzCvhvxX9YlRElD',
+      consumerSecret: 'Rl27iacN4m0dt5BowoaXU3f66yTNlK1IxGRC4Avvc5FKKKeBKz',
+    );
+    final TwitterLoginResult loginResult = await twitterLogin.authorize();
+    final TwitterSession twitterSession = loginResult.session;
+    final AuthCredential twitterAuthCredential =
+        TwitterAuthProvider.getCredential(
+            authToken: twitterSession.token,
+            authTokenSecret: twitterSession.secret);
+    await FirebaseAuth.instance.signInWithCredential(twitterAuthCredential);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+  }
+
+  /*void _signInWithTwitter(String token, String secret) async {
+    final AuthCredential credential = TwitterAuthProvider.getCredential(
+        authToken: token, authTokenSecret: secret);
+    await FirebaseAuth.instance.signInWithCredential(credential);
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+  }*/
 
   void click() {
     signInWithGoogle().then((user) => {
@@ -49,10 +64,18 @@ class _LoginState extends State<Login> {
         });
   }
 
+  /* void twitterclick() {
+    signInWithTwitter().then((user) => {
+          this.user = user,
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Home()))
+        });
+  }
+*/
   Widget build(BuildContext context) {
     final emailField = TextFormField(
-        validator: (val) => val.isEmpty  ? "Enter an email" : null,
-        onChanged: (val){
+        validator: (val) => val.isEmpty ? "Enter an email" : null,
+        onChanged: (val) {
           setState(() => email = val);
         },
         obscureText: false,
@@ -71,10 +94,11 @@ class _LoginState extends State<Login> {
             fillColor: Color(0xffF8A99F),
             filled: true));
     final passwordField = TextFormField(
-      validator: (val) => val.length < 6 ? "Enter a password longer than 6 character" : null,
-      onChanged: (val){
-          setState(() => password = val);
-        },
+      validator: (val) =>
+          val.length < 6 ? "Enter a password longer than 6 character" : null,
+      onChanged: (val) {
+        setState(() => password = val);
+      },
       obscureText: true,
       style: new TextStyle(fontSize: 22.0, color: Colors.black),
       decoration: InputDecoration(
@@ -133,79 +157,89 @@ class _LoginState extends State<Login> {
           ),
         ));
 
+    final twitterButton = Material(
+        elevation: 10.0,
+        borderRadius: BorderRadius.circular(30.0),
+        color: Colors.black,
+        child: Ink(
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 4.0),
+              borderRadius: BorderRadius.circular(32)),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () async {
+              this._twitterlogin();
+            },
+            child: Text("Twitter Sign In",
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ));
+
     final fgtpw = Container(
       height: 20,
       width: 128,
       color: Colors.black,
       child: InkWell(
-        onTap: (){
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => pwreset()));
-        },
-        child: Text("Forgot Password?",
-        style: TextStyle(
-          fontFamily: 'Montserrat',
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          decoration: TextDecoration.underline
-        ),)
-      ),
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => pwreset()));
+          },
+          child: Text(
+            "Forgot Password?",
+            style: TextStyle(
+                fontFamily: 'Montserrat',
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline),
+          )),
     );
 
     final reg = Container(
-      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-      height: 40,
-      width: 300,
-      color: Colors.black,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: Text("New to Moovy?",
-              style: TextStyle(
-                fontFamily: 'Montserrat',
-                color: Colors.white
-              )
+        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        height: 40,
+        width: 300,
+        color: Colors.black,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Center(
+                child: Text("New to Moovy?",
+                    style: TextStyle(
+                        fontFamily: 'Montserrat', color: Colors.white))),
+            SizedBox(width: 5),
+            Center(
+              child: InkWell(
+                  onTap: () {
+                    //Navigator.push(
+                    //context, MaterialPageRoute(builder: (context) => Reg()));
+                    widget.toggleView();
+                  },
+                  child: Text(
+                    "Create an Account!",
+                    style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        color: Color(0xffF8A99F),
+                        fontWeight: FontWeight.bold),
+                  )),
             )
-          ),
-          SizedBox(
-            width:5
-          ),
-          Center(
-            child: InkWell(
-              onTap: (){
-                //Navigator.push(
-                //context, MaterialPageRoute(builder: (context) => Reg()));
-                widget.toggleView();
-              },
-                child: Text("Create an Account!",
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    color: Color(0xffF8A99F),
-                    fontWeight: FontWeight.bold
-                  ),
-                )
-            ),
-          )
-        ],
-      )
-
-    );
+          ],
+        ));
 
     final userInput = Container(
       child: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
+          key: _formKey,
+          child: Column(children: <Widget>[
             emailField,
             SizedBox(height: 10.0),
             passwordField,
-            SizedBox(height: 10.0,),
-          ]
-        )
-      ),
+            SizedBox(
+              height: 10.0,
+            ),
+          ])),
     );
-
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -230,7 +264,7 @@ class _LoginState extends State<Login> {
                     fit: BoxFit.contain,
                   ),
                 ),
-                 SizedBox(height: 40.0),
+                SizedBox(height: 40.0),
                 userInput,
                 fgtpw,
                 SizedBox(
@@ -242,17 +276,19 @@ class _LoginState extends State<Login> {
                 ),
                 googleButton,
                 SizedBox(
+                  height: 20.0,
+                ),
+                twitterButton,
+                SizedBox(
                   height: 12.0,
                 ),
-                Text(
-                  error,
-                  style: TextStyle( 
-                    color: Colors.red,
-                    fontFamily: 'Montserrat',
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  )
-                ),
+                Text(error,
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontFamily: 'Montserrat',
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    )),
                 SizedBox(
                   height: 40.0,
                 ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:noname/models/models.dart';
-import 'package:noname/screens/movieList.dart';
 import 'package:noname/screens/screens.dart';
-import 'package:noname/services/services.dart';
-import 'package:noname/widgets/vertical_icon_button.dart';
+import 'package:noname/widgets/widgets.dart';
 import 'package:route_transitions/route_transitions.dart';
 
 class ContentHeader extends StatelessWidget {
@@ -21,13 +19,16 @@ class ContentHeader extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          height: 500.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(featuredContent[0].fullImageUrl),
-              fit: BoxFit.cover,
-              alignment: Alignment.center
+        Hero(
+          tag: 'movie-img-${featuredContent[0].fullImageUrl}',
+          child: Container(
+            height: 500.0,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(featuredContent[0].fullImageUrl),
+                fit: BoxFit.cover,
+                alignment: Alignment.topCenter
+              ),
             ),
           ),
         ),

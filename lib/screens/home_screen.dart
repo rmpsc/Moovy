@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/all.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:noname/widgets/widgets.dart';
-import '../services/movie_service.dart';
+import '../services/services.dart';
 import 'package:noname/theme.dart';
 
 final moviesFutureProvider =
