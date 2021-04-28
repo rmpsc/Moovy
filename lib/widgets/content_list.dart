@@ -4,7 +4,6 @@ import 'package:noname/models/models.dart';
 import 'package:noname/screens/movie_info_screen.dart';
 import 'package:noname/theme.dart';
 import 'package:route_transitions/route_transitions.dart';
-import 'package:video_player/video_player.dart';
 import 'package:noname/services/movie_service.dart';
 import 'package:flutter/rendering.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
