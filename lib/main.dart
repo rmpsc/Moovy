@@ -10,15 +10,14 @@ class Moovy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Moovy',
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => Login(),
-        '/home': (context) => Home(),
-        '/account': (context) => Account2(),
-      }
-    );
+        title: 'Moovy',
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Login(),
+          '/home': (context) => Home(),
+          '/account': (context) => Account2(),
+        });
   }
 }
 
@@ -29,7 +28,7 @@ class Moovy extends StatelessWidget {
 // import 'package:noname/models/user.dart';
 // void main() => runApp(MyApp());
 // class MyApp extends StatelessWidget {
-  
+
 //   @override
 //   Widget build(BuildContext context) {
 //     return StreamProvider<User>.value(

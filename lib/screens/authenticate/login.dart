@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:noname/screens/screens.dart';
 import 'package:noname/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_twitter_login/flutter_twitter_login.dart';
 
 class Login extends StatefulWidget {
   //Login({Key key, this.title}) : super(key: key);
@@ -18,6 +19,7 @@ class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   FirebaseUser user;
+  String message;
 
   //text field state
   String email = '';
@@ -31,6 +33,29 @@ class _LoginState extends State<Login> {
     signOutGoogle();
   }
 
+  void _twitterlogin() async {
+    final TwitterLogin twitterLogin = new TwitterLogin(
+      consumerKey: 'YAQHFB7vQTdzCvhvxX9YlRElD',
+      consumerSecret: 'Rl27iacN4m0dt5BowoaXU3f66yTNlK1IxGRC4Avvc5FKKKeBKz',
+    );
+    final TwitterLoginResult loginResult = await twitterLogin.authorize();
+    final TwitterSession twitterSession = loginResult.session;
+    final AuthCredential twitterAuthCredential =
+        TwitterAuthProvider.getCredential(
+            authToken: twitterSession.token,
+            authTokenSecret: twitterSession.secret);
+    await FirebaseAuth.instance.signInWithCredential(twitterAuthCredential);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+  }
+
+  /*void _signInWithTwitter(String token, String secret) async {
+    final AuthCredential credential = TwitterAuthProvider.getCredential(
+        authToken: token, authTokenSecret: secret);
+    await FirebaseAuth.instance.signInWithCredential(credential);
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+  }*/
+
   void click() {
     signInWithGoogle().then((user) => {
           this.user = user,
@@ -39,6 +64,14 @@ class _LoginState extends State<Login> {
         });
   }
 
+  /* void twitterclick() {
+    signInWithTwitter().then((user) => {
+          this.user = user,
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Home()))
+        });
+  }
+*/
   Widget build(BuildContext context) {
     final emailField = TextFormField(
         validator: (val) => val.isEmpty ? "Enter an email" : null,
@@ -118,6 +151,27 @@ class _LoginState extends State<Login> {
               this.click();
             },
             child: Text("Google Sign In",
+                textAlign: TextAlign.center,
+                style: style.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.bold)),
+          ),
+        ));
+
+    final twitterButton = Material(
+        elevation: 10.0,
+        borderRadius: BorderRadius.circular(30.0),
+        color: Colors.black,
+        child: Ink(
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 4.0),
+              borderRadius: BorderRadius.circular(32)),
+          child: MaterialButton(
+            minWidth: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+            onPressed: () async {
+              this._twitterlogin();
+            },
+            child: Text("Twitter Sign In",
                 textAlign: TextAlign.center,
                 style: style.copyWith(
                     color: Colors.white, fontWeight: FontWeight.bold)),
@@ -221,6 +275,10 @@ class _LoginState extends State<Login> {
                   height: 20.0,
                 ),
                 googleButton,
+                SizedBox(
+                  height: 20.0,
+                ),
+                twitterButton,
                 SizedBox(
                   height: 12.0,
                 ),
