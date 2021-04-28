@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:noname/screens/screens.dart';
-import 'package:noname/services/auth.dart';
+import 'package:noname/services/services.dart';
 
 class Reg extends StatefulWidget {
   //Reg({Key key, this.title}) : super(key: key);
@@ -21,6 +21,9 @@ class _RegState extends State<Reg> {
   String email = '';
   String password = '';
   String error = '';
+  String firstName = '';
+  String lastName = '';
+  String userLocation = '';
   String err =
       "PlatformException(ERROR_EMAIL_ALREADY_IN_USE, The email address is already in use by another account., null, null)";
 
@@ -70,6 +73,69 @@ class _RegState extends State<Reg> {
         filled: true,
       ),
     );
+    final location = TextFormField(
+      validator: (val) => val.length == 0 ? "Location can not be blank" : null,
+      //key: _formKey,
+      obscureText: false,
+      onChanged: (val) {
+        setState(() => userLocation = val);
+      },
+      style: new TextStyle(fontSize: 22.0, color: Colors.black),
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+            // width: 0.0 produces a thin "hairline" border
+            borderSide: BorderSide(color: Colors.white, width: 3.0)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xffB4FA92), width: 3.0),
+            borderRadius: BorderRadius.circular(32)),
+        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        hintText: "Location",
+        fillColor: Color(0xffF8A99F),
+        filled: true,
+      ),
+    );
+    final fN = TextFormField(
+      validator: (val) =>
+          val.length == 0 ? "First Name can not be blank" : null,
+      //key: _formKey,
+      obscureText: false,
+      onChanged: (val) {
+        setState(() => firstName = val);
+      },
+      style: new TextStyle(fontSize: 22.0, color: Colors.black),
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+            // width: 0.0 produces a thin "hairline" border
+            borderSide: BorderSide(color: Colors.white, width: 3.0)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xffB4FA92), width: 3.0),
+            borderRadius: BorderRadius.circular(32)),
+        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        hintText: "First Name",
+        fillColor: Color(0xffF8A99F),
+        filled: true,
+      ),
+    );
+    final lN = TextFormField(
+      validator: (val) => val.length == 0 ? "Last Name can not be blank" : null,
+      obscureText: false,
+      onChanged: (val) {
+        setState(() => lastName = val);
+      },
+      style: new TextStyle(fontSize: 22.0, color: Colors.black),
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+            // width: 0.0 produces a thin "hairline" border
+            borderSide: BorderSide(color: Colors.white, width: 3.0)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xffB4FA92), width: 3.0),
+            borderRadius: BorderRadius.circular(32)),
+        contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+        hintText: "Last Name",
+        fillColor: Color(0xffF8A99F),
+        filled: true,
+      ),
+    );
     final regButon = Material(
         elevation: 10.0,
         borderRadius: BorderRadius.circular(30.0),
@@ -83,8 +149,8 @@ class _RegState extends State<Reg> {
             padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
             onPressed: () async {
               if (_formKey.currentState.validate()) {
-                dynamic result =
-                    await _auth.registerWithEmailandPassword(email, password);
+                dynamic result = await _auth.registerWithEmailandPassword(
+                    email, password, firstName, lastName, userLocation);
 
                 if (result == null) {
                   setState(() => error = 'Invalid email');
@@ -92,13 +158,6 @@ class _RegState extends State<Reg> {
                   setState(() => error = 'Email already in use');
                 }
               }
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (context) => Home()));
-
-              //print(email);
-              //print(password);
-              //Navigator.push(
-              //context, MaterialPageRoute(builder: (context) => Login()));
             },
             child: Text("Register",
                 textAlign: TextAlign.center,
@@ -167,12 +226,21 @@ class _RegState extends State<Reg> {
             SizedBox(
               height: 10.0,
             ),
+            fN,
+            SizedBox(
+              height: 10.0,
+            ),
+            lN,
+            SizedBox(
+              height: 10.0,
+            ),
+            location,
           ])),
     );
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Center(
+      //resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
         //key:  _formKey,
         child: Container(
           decoration: BoxDecoration(
@@ -182,7 +250,7 @@ class _RegState extends State<Reg> {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(36.0),
+            padding: const EdgeInsets.fromLTRB(36, 36, 36, 45),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -191,12 +259,13 @@ class _RegState extends State<Reg> {
                   height: 150.0,
                   child: Image.asset(
                     "assets/moovylogo.png",
-                    fit: BoxFit.contain,
+                    fit: BoxFit.fill,
                   ),
                 ),
                 SizedBox(height: 40.0),
                 userInput,
-                fgtpw,
+
+                //fgtpw,
                 SizedBox(
                   height: 20.0,
                 ),
@@ -212,7 +281,7 @@ class _RegState extends State<Reg> {
                       fontWeight: FontWeight.bold,
                     )),
                 SizedBox(
-                  height: 40.0,
+                  height: 20.0,
                 ),
                 signIn
               ],

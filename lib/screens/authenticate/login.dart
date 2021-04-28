@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
   String password = '';
   String error = '';
 
-  //TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+  TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
   @override
   void initState() {
     super.initState();
@@ -302,4 +302,4 @@ class _LoginState extends State<Login> {
   }
 }
 
-//TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
+TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);

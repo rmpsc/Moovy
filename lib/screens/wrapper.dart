@@ -1,7 +1,5 @@
-import 'package:noname/screens/authenticate/login.dart';
-import 'package:noname/screens/authenticate/authenticate.dart';
 import 'package:flutter/material.dart';
-import 'package:noname/screens/home.dart';
+import 'package:noname/screens/screens.dart';
 import 'package:provider/provider.dart';
 import 'package:noname/models/user.dart';
 
@@ -14,7 +12,7 @@ class Wrapper extends StatelessWidget {
       return Authenticate();
     } else {
       print("signed in");
-      return Home2();
+      return Home1();
     }
   }
 }

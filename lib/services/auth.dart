@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:noname/models/user.dart';
+import 'package:noname/services/database.dart';
 
 class AuthService{
 
@@ -33,6 +34,10 @@ class AuthService{
     }
   }
 
+  Future<String> getCurrentUID() async{
+    return (await _auth.currentUser()).uid;
+  }
+
   //sign in with email and pw
   Future signInWithEmailandPassword(String email, String password) async {
     try{
@@ -48,10 +53,15 @@ class AuthService{
 
 
   //register with email and pw
-  Future registerWithEmailandPassword(String email, String password) async {
+  Future registerWithEmailandPassword(String email, String password, String firstName, String lastName, String location) async {
     try{
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
+      
+
+      //create a new document from the user with uid
+      await DatabaseService(uid: user.uid).updateUserData(firstName,lastName,location);
+
       return _userFromFirebaseUser(user);
     } 
     catch(e){
@@ -66,6 +76,7 @@ class AuthService{
     }
   }
 
+
   //sign out
 
   Future signOut() async {
@@ -76,4 +87,52 @@ class AuthService{
       return null;
     }
   }
+
+  
+  //delete user
+  Future deleteUser(String email, String password) async {
+    try {
+      FirebaseUser user = await _auth.currentUser();
+      AuthCredential credentials =
+          EmailAuthProvider.getCredential(email: email, password: password);
+      print(user);
+      //AuthResult result = await user.reauthenticateWithCredential(credentials);
+      print(user.uid);
+      await DatabaseService(uid: user.uid).deleteuser(); // called from database class
+      await user.delete();
+      return true;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future<bool> validatePassword(String password) async {
+    FirebaseUser firebaseUser = await _auth.currentUser();
+    
+    
+    print(password);
+    AuthCredential credentials = EmailAuthProvider.getCredential(
+      email: firebaseUser.email,
+      password: password
+    );
+    print(firebaseUser.email);
+    print(password);
+    
+    try{
+      
+      var authResult = await firebaseUser.reauthenticateWithCredential(credentials);
+      return authResult.user != null;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+  //use this function to delete user in clickable event
+  // onTap: () async {  
+  //    await AuthService().deleteUser(email, password);
+  // }
+
+
+
 }

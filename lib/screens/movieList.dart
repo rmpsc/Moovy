@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:noname/screens/home_screen.dart';
 import 'package:noname/models/movie.dart';
-import 'package:noname/screens/movie_info_screen.dart';
+import 'package:noname/screens/screens.dart';
 import 'package:noname/theme.dart';
 import 'package:noname/widgets/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -57,6 +56,9 @@ class _MovieListState extends State<MovieList> {
         setState(() {
           movies.removeAt(index);
         });
+        break;
+      case SlidableAction.edit:
+        // TODO: Handle this case.
         break;
     }
   }
