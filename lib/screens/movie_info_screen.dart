@@ -4,6 +4,7 @@ import 'package:noname/models/models.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:noname/screens/screens.dart';
 import 'package:noname/theme.dart';
+import 'package:noname/widgets/widgets.dart';
 import 'package:route_transitions/route_transitions.dart';
 import 'package:unicorndial/unicorndial.dart';
 
@@ -24,7 +25,10 @@ class MovieInfoScreen extends StatelessWidget {
           mini: true,
           child: Icon(Icons.play_arrow),
           onPressed: () {
-            print("Streaming...");
+            Navigator.push(context, PageRouteTransition(
+              animationType: AnimationType.fade,
+              builder: (context)=>MyHomePage(movieKey: 'odM92ap8_c0',
+              title: movie.title, desc: movie.overview,)));
           },
         )));
     childButtons.add(UnicornButton(

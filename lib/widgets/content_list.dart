@@ -142,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       player,
                       SizedBox(
-                        height: 12.0,
+                        height: 14.5,
                       ),
                       SecondaryText(
                         text: desc,
