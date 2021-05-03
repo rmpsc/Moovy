@@ -27,7 +27,7 @@ class ContentHeader extends StatelessWidget {
               image: DecorationImage(
                 image: NetworkImage(featuredContent[0].fullImageUrl),
                 fit: BoxFit.cover,
-                alignment: Alignment.topCenter
+                alignment: Alignment.center
               ),
             ),
           ),

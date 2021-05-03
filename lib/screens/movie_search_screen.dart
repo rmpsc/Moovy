@@ -35,7 +35,7 @@ class _ExamplePageState extends State<ExamplePage> {
   List names = new List();
   List filteredNames = new List();
   Icon _searchIcon = new Icon(Icons.search);
-  Widget _appBarTitle = new Text('Search Moovies');
+  Widget _appBarTitle = new Text('Search Moovies',);
 
   _ExamplePageState() {
     _filter.addListener(() {
