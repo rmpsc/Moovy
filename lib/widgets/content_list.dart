@@ -82,9 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         backgroundColor: primaryColor,
         appBar: AppBar(
-          title: Text(
-            title,
-            style: TextStyle(fontSize: 32, color: secondaryColor),),
+          title: PrimaryText(
+            text: title,
+          ),
           backgroundColor: primaryColor,
           elevation: 1,
           leading: IconButton(
@@ -126,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Icons.settings,
                     color: Colors.white,
                     size: 25.0,
-                  ),
+                  ), onPressed: () {  },
                 ),
               ],
               onReady: () {
@@ -136,15 +136,20 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context, player) => Scaffold(
               backgroundColor: primaryColor,
               body:
-                  ListView(
+                Padding(
+                  padding: EdgeInsets.fromLTRB(12.0, 24.0, 12.0, 12.0),
+                  child: ListView(
                     children: [
                       player,
-                      Text(
-                        desc,
-                        style: TextStyle(fontSize: 16, color: secondaryColor),
+                      SizedBox(
+                        height: 12.0,
+                      ),
+                      SecondaryText(
+                        text: desc,
                       )
                     ]
-                  )
+                  ),
+                )
             )
         )));
   }
