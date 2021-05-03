@@ -99,9 +99,8 @@ class _ExamplePageState extends State<ExamplePage> {
       itemCount: names == null ? 0 : filteredNames.length,
       itemBuilder: (BuildContext context, int index) {
         return new ListTile(
-          title: Text(
-            filteredNames[index].title,
-            style: TextStyle(color: Colors.white),
+          title: SecondaryText(
+            text: filteredNames[index].title,
           ),
           onTap: () {
             Navigator.push(

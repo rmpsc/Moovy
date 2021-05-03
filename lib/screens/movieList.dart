@@ -26,19 +26,26 @@ class MovieList extends StatefulWidget {
 }
 
 class _MovieListState extends State<MovieList> {
-  Widget buildListTile(String name) => ListTile(
+  Widget buildListTile(Image img, String name) => ListTile(
         contentPadding: EdgeInsets.symmetric(
           horizontal: 16,
-          vertical: 16,
+          vertical: 8,
         ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 4),
-            Text(name,
-                style: TextStyle(
-                  color: Colors.white,
-                )),
+
+        
+        
+        
+        title: 
+        Column(
+          children: [PrimaryText(text: name),
+          SizedBox(height: 12,),
+            Row(
+              
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                img, 
+              ],
+            ),
           ],
         ),
         onTap: () {},
@@ -79,7 +86,7 @@ class _MovieListState extends State<MovieList> {
             itemBuilder: (context, index) {
               final movie = movies[index];
               return SlidableWidget(
-                child: buildListTile(movie.title),
+                child: buildListTile(Image.network(movie.fullImageUrl, height: 280), movie.title),
                 onDismissed: (action) =>
                     dismissableSlidableItem(context, index, action),
               );
