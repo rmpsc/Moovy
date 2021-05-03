@@ -53,31 +53,37 @@ class ContentList extends StatelessWidget {
                   },
                   child: Stack(children: [
                   // Hero widget for movie img animation
-                   Hero(
-                    tag: 'movie-img-${content.fullImageUrl}',
-                    child: Container(
-                      height: isTopRated ? 400.0 : 200.0,
-                      width: isTopRated ? 200.0 : 130.0,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(content.fullImageUrl),
-                          fit: BoxFit.cover,
+                    Hero(
+                      tag: 'movie-img-${content.fullImageUrl}',
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        height: isTopRated ? 400.0 : 200.0,
+                        width: isTopRated ? 200.0 : 130.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(content.fullImageUrl),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                    Positioned(top:0,child:(MaterialButton(  
+                    Positioned(
+                      top: -2,
+                      left: 6,
+                      child: MaterialButton(  
                         minWidth: 2.0,
                         height: 5.0,
                         onPressed: null,
-                        disabledColor: Color(0xffF8A99F),
+                        disabledColor: secondaryColor,
+                        disabledElevation: 10,
                         disabledTextColor: Colors.black,
-                        child: Text(content.voteAverage.toString()),
-                        padding: EdgeInsets.all(10),
-                        shape: CircleBorder(),
-                      )))                      ,
+                        child:Text(
+                          content.voteAverage.toString()),
+                          padding: EdgeInsets.all(10),
+                          shape: CircleBorder(),
+                      )
+                    ),
                   ],)
-                  
                 );
               },
             ),
