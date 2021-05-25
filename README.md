@@ -1,7 +1,6 @@
 # Moovy
 ### A mooviegoer's favorite streaming and database application
-![](https://i.gyazo.com/457f5fed0a30eefcdf5badf2fd696657.png)
-![](https://media.giphy.com/media/7bBfO7UazurNafsB0Y/giphy.gif)
+<img src="https://i.gyazo.com/7348302de21028775a20fb26e55fc174.jpg" width="550">
 
  ## Getting Started
 - Run `flutter pub get`
